@@ -1,1 +1,2 @@
-# react-test
+# ComicsMar
+# https://ibadichan.github.io/ComicsMar/dist/index.html
