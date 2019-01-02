@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CatalogItem from './CatalogItem';
 
 function CatalogList({ products }) {
@@ -15,5 +16,9 @@ function CatalogList({ products }) {
     </section>
   );
 }
+
+CatalogList.propTypes = {
+  products: PropTypes.array
+};
 
 export default CatalogList;
