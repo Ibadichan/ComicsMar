@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Price({ children }) {
   return (
@@ -7,5 +8,9 @@ function Price({ children }) {
     </b>
   );
 }
+
+Price.propTypes = {
+  children: PropTypes.string.isRequired
+};
 
 export default Price;

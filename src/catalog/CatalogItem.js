@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from './CatalogItem/Header';
 import Image from './CatalogItem/Image';
 import Price from './CatalogItem/Price';
@@ -14,5 +15,9 @@ function CatalogItem(props) {
     </li>
   );
 }
+
+CatalogItem.propTypes = {
+  product: PropTypes.object
+};
 
 export default CatalogItem;

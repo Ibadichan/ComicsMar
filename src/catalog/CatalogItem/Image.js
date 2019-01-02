@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Image({ src, width, height, alt }) {
   return (
@@ -7,5 +8,12 @@ function Image({ src, width, height, alt }) {
     </p>
   );
 }
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  alt: PropTypes.string
+};
 
 export default Image;
