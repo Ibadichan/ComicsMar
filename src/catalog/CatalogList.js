@@ -8,9 +8,9 @@ function CatalogList({ products }) {
       <h2>Catalog of products</h2>
       <ul className='catalog-list'>
         {
-          products.map(product => {
-            return <CatalogItem key={product.id} product={product} />
-          })
+          products.map(product => (
+            <CatalogItem key={product.id} product={product} />
+          ))
         }
       </ul>
     </section>
@@ -18,7 +18,7 @@ function CatalogList({ products }) {
 }
 
 CatalogList.propTypes = {
-  products: PropTypes.array
+  products: PropTypes.array.isRequired
 };
 
 export default CatalogList;
