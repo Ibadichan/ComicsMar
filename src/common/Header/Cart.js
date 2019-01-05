@@ -7,12 +7,7 @@ function Cart() {
       Cart
       <span className='cart-link-counter'>
         <CartAmountContext.Consumer>
-          {
-            purchases => {
-              console.log(purchases);
-              return purchases.length;
-            }
-          }
+          { purchases => purchases.length }
         </CartAmountContext.Consumer>
       </span>
     </a>
