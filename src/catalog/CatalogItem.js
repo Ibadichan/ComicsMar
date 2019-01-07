@@ -17,7 +17,7 @@ function CatalogItem({ product }) {
 }
 
 CatalogItem.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object.isRequired
 };
 
 export default CatalogItem;

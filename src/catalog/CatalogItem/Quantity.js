@@ -6,12 +6,11 @@ function Quantity({ productId, value, onChange }) {
 
   return (
     <p className='catalog-item-quantity-wrapper'>
-      <label htmlFor={id} className='visually-hidden'>
-        Quantity
-      </label>
+      <label htmlFor={id}>Quantity</label>
       <input
         type='number'
         id={id}
+        name={id}
         value={value}
         onChange={onChange}
       />
@@ -20,7 +19,10 @@ function Quantity({ productId, value, onChange }) {
 }
 
 Quantity.propTypes = {
-  productId: PropTypes.string.isRequired,
+  productId: PropTypes.oneOfType([
+    PropTypes.number.isRequired,
+    PropTypes.string.isRequired
+  ]),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
