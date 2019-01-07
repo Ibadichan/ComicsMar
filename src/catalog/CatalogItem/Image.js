@@ -11,8 +11,8 @@ function Image({ src, width, height, alt }) {
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   alt: PropTypes.string
 };
 
