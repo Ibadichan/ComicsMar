@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import Products from '../../constants/Products';
-import AddPurchaseContext from '../contexts/cart/AddPurchaseContext';
-import CartAmountContext from '../contexts/cart/CartAmountContext';
-import Catalog from './Catalog';
+import Products from './constants/Products';
 
-class CatalogPage extends Component {
+import AddPurchaseContext from './contexts/cart/AddPurchaseContext';
+import CartAmountContext from './contexts/cart/CartAmountContext';
+import ProductListContext from './contexts/products/ProductListContext';
+
+import CatalogPage from './pages/catalog/index';
+import Header from './common/components/header/Header';
+import Footer from './common/components/Footer';
+
+class Application extends Component {
   constructor(props) {
     super(props);
     this.state = { purchases: [], products: Products };
@@ -33,11 +38,15 @@ class CatalogPage extends Component {
     return (
       <CartAmountContext.Provider value={this.state.purchases}>
         <AddPurchaseContext.Provider value={this.addPurchase}>
-          <Catalog products={this.state.products} />
+          <ProductListContext.Provider value={this.state.products}>
+            <Header />
+            <CatalogPage />
+            <Footer />
+          </ProductListContext.Provider>
         </AddPurchaseContext.Provider>
       </CartAmountContext.Provider>
     );
   }
 }
 
-export default CatalogPage;
+export default Application;

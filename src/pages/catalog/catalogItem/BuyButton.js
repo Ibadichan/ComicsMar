@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddPurchaseContext from '../../contexts/cart/AddPurchaseContext';
+import AddPurchaseContext from '../../../contexts/cart/AddPurchaseContext';
 
 function BuyButton({ product, quantity }) {
   return (
