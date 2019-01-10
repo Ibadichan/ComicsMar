@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CatalogPage from './src/catalog/index';
+import Application from './src/Application';
 
 ReactDOM.render(
-  <CatalogPage />,
+  <Application />,
   document.getElementById('root')
 );

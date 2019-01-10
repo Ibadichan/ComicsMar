@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './CatalogItem/Header';
-import Image from './CatalogItem/Image';
-import Commerce from './CatalogItem/Commerce';
+import Header from './catalogItem/Header';
+import Image from './catalogItem/Image';
+import Commerce from './catalogItem/Commerce';
 
 function CatalogItem({ product }) {
   const { title, imageUrl } = product;

@@ -1,5 +1,5 @@
 import React from 'react';
-import CartAmountContext from '../../contexts/cart/CartAmountContext';
+import CartAmountContext from '../../../contexts/cart/CartAmountContext';
 
 function Cart() {
   return (
