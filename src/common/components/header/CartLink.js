@@ -1,17 +1,19 @@
 import React from 'react';
 import CartAmountContext from '../../../contexts/cart/CartAmountContext';
+import NavLink from '../linkWrappers/NavLink';
+import { cartPath } from '../../../helpers/routes';
 
-function Cart() {
+function CartLink() {
   return (
-    <a href='#' className='cart-link'>
+    <NavLink to={cartPath()} activeClassName='disabled'>
       Cart
       <span className='cart-link-counter'>
         <CartAmountContext.Consumer>
           { purchases => purchases.length }
         </CartAmountContext.Consumer>
       </span>
-    </a>
+    </NavLink>
   );
 }
 
-export default Cart;
+export default CartLink;
