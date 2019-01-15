@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Image({ src, width, height, alt }) {
+function Image({ src, width, height, alt, className }) {
   return (
-    <p className='catalog-item-image'>
+    <p className={className}>
       <img src={src} width={width} height={height} alt={alt} />
     </p>
   );

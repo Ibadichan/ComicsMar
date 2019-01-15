@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Router, Switch } from 'react-router-dom';
+
+import history from './common/history';
+import routes from './routes/index';
+import RouteWithSubRoutes from './common/components/RouteWithSubRoutes';
+
 import Products from './constants/Products';
+
+import Header from './common/components/header/Header';
+import Footer from './common/components/Footer';
 
 import AddPurchaseContext from './contexts/cart/AddPurchaseContext';
 import CartAmountContext from './contexts/cart/CartAmountContext';
 import ProductListContext from './contexts/products/ProductListContext';
-
-import CatalogPage from './pages/catalog/index';
-import Header from './common/components/header/Header';
-import Footer from './common/components/Footer';
 
 class Application extends Component {
   constructor(props) {
@@ -36,15 +41,23 @@ class Application extends Component {
 
   render() {
     return (
+      <AddPurchaseContext.Provider value={this.addPurchase}>
       <CartAmountContext.Provider value={this.state.purchases}>
-        <AddPurchaseContext.Provider value={this.addPurchase}>
-          <ProductListContext.Provider value={this.state.products}>
+      <ProductListContext.Provider value={this.state.products}>
+        <Router history={history}>
+          <Fragment>
             <Header />
-            <CatalogPage />
+            <Switch>
+              {
+                routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)
+              }
+            </Switch>
             <Footer />
-          </ProductListContext.Provider>
-        </AddPurchaseContext.Provider>
+          </Fragment>
+        </Router>
+      </ProductListContext.Provider>
       </CartAmountContext.Provider>
+      </AddPurchaseContext.Provider>
     );
   }
 }
