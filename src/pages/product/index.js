@@ -11,7 +11,9 @@ function ProductPage({ match }) {
     <ProductListContext.Consumer>
       {
         products => {
-          const product = products.filter(product => product.id === id)[0];
+          const product = products.filter(product => product.id == id)[0];
+
+          if (!product) { return; }
 
           return (
             <Main headerText={product.title}>

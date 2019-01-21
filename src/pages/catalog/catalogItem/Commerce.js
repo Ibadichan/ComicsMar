@@ -7,19 +7,19 @@ import BuyButton from './BuyButton';
 class Commerce extends Component {
   constructor(props) {
     super(props);
-    this.state = { quantityValue: '1' };
+    this.state = { quantity: 1 };
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
 
   handleQuantityChange(event) {
     this.setState({
-      quantityValue: event.target.value
+      quantity: +event.target.value
     });
   }
 
   render() {
     const product = this.props.product;
-    const quantity = this.state.quantityValue;
+    const quantity = this.state.quantity;
 
     return (
       <div className='catalog-item-сommerce'>

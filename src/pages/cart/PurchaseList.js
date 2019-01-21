@@ -9,8 +9,8 @@ function PurchaseList({ purchases }) {
 
       <ul className='purchase-list'>
         {
-          purchases.map((purchase, i) => (
-            <PurchaseItem key={i} purchase={purchase} />
+          purchases.map(purchase => (
+            <PurchaseItem key={purchase.id} purchase={purchase} />
           ))
         }
       </ul>
