@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
-import { Router, Switch } from 'react-router-dom';
+import React, { Component, StrictMode } from 'react';
 
+import { Router, Switch } from 'react-router-dom';
 import history from './common/history';
 import routes from './routes/index';
 import RouteWithSubRoutes from './common/components/RouteWithSubRoutes';
 
-import Products from './constants/Products';
+import request from 'superagent';
+import { baseUrl, spaceId, accessToken, environment } from './constants/contentful';
 
 import Header from './common/components/header/Header';
 import Footer from './common/components/Footer';
@@ -17,15 +18,53 @@ import ProductListContext from './contexts/products/ProductListContext';
 class Application extends Component {
   constructor(props) {
     super(props);
-    this.state = { purchases: [], products: Products };
+    this.state = { purchases: [], products: [] };
     this.addPurchase = this.addPurchase.bind(this);
+  }
+
+  componentDidMount() {
+    request
+      .get(`${baseUrl}/spaces/${spaceId}/environments/${environment}/entries`)
+      .query({ content_type: 'product' })
+      .set('Authorization', `Bearer ${accessToken}`)
+      .then(response => this.parseProducts(response.body))
+      .then(products => this.setState({ products }))
+      .catch(error => console.error(error));
+  }
+
+  parseProducts({ items, includes }) {
+    let products = [];
+    let product, photoFullId, asset, assetFields;
+
+    for (let i = 0; i < items.length; i++) {
+      product = items[i].fields;
+      photoFullId = product.photoFull.sys.id;
+
+      for (let j = 0; j < includes.Asset.length; j++) {
+        asset = includes.Asset[j];
+        assetFields = asset.fields;
+
+        if (asset.sys.id !== photoFullId) { continue; }
+        product.photoFull = {
+          src: assetFields.file.url,
+          alt: assetFields.title,
+          width: assetFields.file.details.image.width,
+          height: assetFields.file.details.image.height
+        };
+        break;
+      }
+
+      products.push(product);
+    }
+
+    return products;
   }
 
   addPurchase(event, purchase, quantity) {
     event.preventDefault();
     const purchases = JSON.parse(JSON.stringify(this.state.purchases));
     let purchaseExists = false;
-    purchase.quantity = Math.round(quantity <= 1 ? 1 : quantity);
+    purchase.quantity = quantity;
 
     for (let i = 0; i < purchases.length; i++) {
       if (purchases[i].id !== purchase.id) { continue; }
@@ -36,7 +75,7 @@ class Application extends Component {
 
     if (!purchaseExists) { purchases.push(purchase); }
 
-    this.setState({ purchases: purchases });
+    this.setState({ purchases });
   }
 
   render() {
@@ -45,7 +84,7 @@ class Application extends Component {
       <CartAmountContext.Provider value={this.state.purchases}>
       <ProductListContext.Provider value={this.state.products}>
         <Router history={history}>
-          <Fragment>
+          <StrictMode>
             <Header />
             <Switch>
               {
@@ -53,7 +92,7 @@ class Application extends Component {
               }
             </Switch>
             <Footer />
-          </Fragment>
+          </StrictMode>
         </Router>
       </ProductListContext.Provider>
       </CartAmountContext.Provider>

@@ -11,7 +11,6 @@ function Quantity({ productId, value, onChange }) {
         type='number'
         min='1'
         id={id}
-        name={id}
         value={value}
         onChange={onChange}
       />
@@ -20,11 +19,8 @@ function Quantity({ productId, value, onChange }) {
 }
 
 Quantity.propTypes = {
-  productId: PropTypes.oneOfType([
-    PropTypes.number.isRequired,
-    PropTypes.string.isRequired
-  ]),
-  value: PropTypes.string.isRequired,
+  productId: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

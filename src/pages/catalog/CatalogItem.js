@@ -7,17 +7,14 @@ import Link from '../../common/components/linkWrappers/Link';
 import { productPath } from '../../helpers/routes';
 
 function CatalogItem({ product }) {
-  const { title, imageUrl } = product;
+  const { title, photoFull } = product;
 
   return (
     <li className='catalog-item'>
       <Link to={productPath(product.id)}>
         <Header>{title}</Header>
         <Image
-          src={imageUrl}
-          width='300'
-          height='450'
-          alt={title}
+          {...photoFull}
           className='catalog-item-image'
         />
       </Link>
@@ -29,8 +26,8 @@ function CatalogItem({ product }) {
 CatalogItem.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired
-  })
+    photoFull: PropTypes.object.isRequired
+  }).isRequired
 };
 
 export default CatalogItem;

@@ -3,17 +3,12 @@ import Image from '../../common/components/product/Image';
 import PropTypes from 'prop-types';
 
 function Photos({ product }) {
-  const { imageUrl, title } = product;
-
   return (
     <section className='product-photos'>
       <h2>Product photos:</h2>
 
       <Image
-        src={imageUrl}
-        width='300'
-        height='450'
-        alt={title}
+        {...product.photoFull}
         className='product-photo-full'
       />
     </section>
@@ -22,9 +17,8 @@ function Photos({ product }) {
 
 Photos.propTypes = {
   product: PropTypes.shape({
-    imageUrl: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  })
+    photoFull: PropTypes.object.isRequired
+  }).isRequired
 };
 
 export default Photos;

@@ -7,13 +7,13 @@ function BuyButton({ product, quantity }) {
     <AddPurchaseContext.Consumer>
       {
         addPurchase => (
-          <a
-            href='#'
+          <button
+            type='button'
             className='button catalog-item-buy'
             onClick={(event) => addPurchase(event, product, quantity)}
           >
             Add to Cart
-          </a>
+          </button>
         )
       }
     </AddPurchaseContext.Consumer>
@@ -22,7 +22,7 @@ function BuyButton({ product, quantity }) {
 
 BuyButton.propTypes = {
   product: PropTypes.object.isRequired,
-  quantity: PropTypes.string.isRequired
+  quantity: PropTypes.number.isRequired
 };
 
 export default BuyButton;

@@ -9,7 +9,7 @@ function CatalogPage({ location }) {
     <Main headerText='ComicsMar - World of comics'>
       {
         location.state &&
-        location.state.hasOwnProperty('message') &&
+        location.state.message &&
         <NoticeMessage text={location.state.message} />
       }
       <ProductListContext.Consumer>
