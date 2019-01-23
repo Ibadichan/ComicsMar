@@ -33,31 +33,39 @@ class Application extends Component {
   }
 
   parseProducts({ items, includes }) {
-    let products = [];
-    let product, photoFullId, asset, assetFields;
+    const assets = includes.Asset;
+    const products = items.map(({ fields }) => {
+      fields.photoFull   = this.findProductPhotos(assets, fields.photoFull);
+      fields.largePhotos = this.findProductPhotos(assets, fields.largePhotos);
+      fields.smallPhotos = this.findProductPhotos(assets, fields.smallPhotos);
 
-    for (let i = 0; i < items.length; i++) {
-      product = items[i].fields;
-      photoFullId = product.photoFull.sys.id;
+      return fields;
+    });
 
-      for (let j = 0; j < includes.Asset.length; j++) {
-        asset = includes.Asset[j];
+    return products;
+  }
+
+  findProductPhotos(assets, photos) {
+    photos = Array.isArray(photos) ? photos : [photos];
+
+    const parsedPhotos = photos.map(photo => {
+      let asset, assetFields;
+
+      for (let i = 0; i < assets.length; i++) {
+        asset = assets[i];
         assetFields = asset.fields;
 
-        if (asset.sys.id !== photoFullId) { continue; }
-        product.photoFull = {
+        if (asset.sys.id !== photo.sys.id) { continue };
+        return {
           src: assetFields.file.url,
           alt: assetFields.title,
           width: assetFields.file.details.image.width,
           height: assetFields.file.details.image.height
         };
-        break;
-      }
+      };
+    });
 
-      products.push(product);
-    }
-
-    return products;
+    return (parsedPhotos.length > 1 ? parsedPhotos : parsedPhotos[0]);
   }
 
   addPurchase(event, purchase, quantity) {
