@@ -6,7 +6,8 @@ import routes from './routes/index';
 import RouteWithSubRoutes from './common/components/RouteWithSubRoutes';
 
 import request from 'superagent';
-import { baseUrl, spaceId, accessToken, environment } from './constants/contentful';
+import { contentful } from './config/settings';
+const { baseUrl, spaceId, accessToken, environment  } = contentful;
 
 import Header from './common/components/header/Header';
 import Footer from './common/components/Footer';
