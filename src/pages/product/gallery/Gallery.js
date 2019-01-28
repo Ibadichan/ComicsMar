@@ -9,6 +9,8 @@ function Gallery(props) {
     onThumbClick,
     moveBackward,
     moveForward,
+    onTouchStart,
+    onTouchEnd,
     position
   } = props;
 
@@ -24,6 +26,8 @@ function Gallery(props) {
         <ul
           className='product-gallery-list'
           onClick={onThumbClick}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
           style={{transform: `translateX(${position}px)`}}
         >
           {

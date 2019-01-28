@@ -3,9 +3,7 @@ import Image from '../../common/components/product/Image';
 import Gallery from './gallery/Gallery';
 import PropTypes from 'prop-types';
 import { productGallery } from './../../config/settings';
-
-const slideWidth = productGallery.slideWidth;
-const slideCount = productGallery.slideCount;
+const { slideWidth, slideCount, touchMinDistance } = productGallery;
 
 class Photos extends PureComponent {
   constructor(props) {
@@ -14,10 +12,12 @@ class Photos extends PureComponent {
       photoFull: props.product.photoFull,
       galleryPosition: 0
     };
-
+    this.swipe = {};
     this.handleThumbClick = this.handleThumbClick.bind(this);
     this.moveGalleryBackward = this.moveGalleryBackward.bind(this);
     this.moveGalleryForward = this.moveGalleryForward.bind(this);
+    this.handleGalleryTouchStart = this.handleGalleryTouchStart.bind(this);
+    this.handleGalleryTouchEnd = this.handleGalleryTouchEnd.bind(this);
   }
 
   componentDidMount() {
@@ -68,6 +68,20 @@ class Photos extends PureComponent {
     this.setState({ galleryPosition });
   }
 
+  handleGalleryTouchStart(event) {
+    const touch = event.touches[0];
+    this.swipe = { x: touch.clientX };
+  }
+
+  handleGalleryTouchEnd(event) {
+    const touch = event.changedTouches[0];
+    const touchDistance = touch.clientX - this.swipe.x;
+    if (Math.abs(touchDistance) < touchMinDistance) { return; }
+    touchDistance < 0 ?
+      this.moveGalleryBackward() :
+      this.moveGalleryForward()
+  }
+
   render() {
     const product = this.props.product;
     const photoFull = this.state.photoFull;
@@ -83,6 +97,8 @@ class Photos extends PureComponent {
           onThumbClick={this.handleThumbClick}
           moveBackward={this.moveGalleryBackward}
           moveForward={this.moveGalleryForward}
+          onTouchStart={this.handleGalleryTouchStart}
+          onTouchEnd={this.handleGalleryTouchEnd}
           position={galleryPosition}
         />
       </section>
