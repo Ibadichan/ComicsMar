@@ -1,6 +1,7 @@
 const productGallery = {
   slideWidth: 105,
-  slideCount: 2
+  slideCount: 2,
+  touchMinDistance: 50
 };
 
 const contentful = {
