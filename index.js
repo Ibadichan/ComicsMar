@@ -4,5 +4,5 @@ import Application from './src/Application';
 
 ReactDOM.render(
   <Application />,
-  document.getElementById('root')
+  document.getElementById('app-root')
 );

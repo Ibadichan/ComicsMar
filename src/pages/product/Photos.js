@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Image from '../../common/components/product/Image';
 import Gallery from './gallery/Gallery';
-import PropTypes from 'prop-types';
+import OpenGalleryModal from './gallery/OpenGalleryModal';
+import GalleryModal from './gallery/GalleryModal';
 import { productGallery } from './../../config/settings';
 const { slideWidth, slideCount, touchMinDistance } = productGallery;
 
@@ -10,7 +12,8 @@ class Photos extends PureComponent {
     super(props);
     this.state = {
       photoFull: props.product.photoFull,
-      galleryPosition: 0
+      galleryPosition: 0,
+      galleryModalIsOpen: false
     };
     this.swipe = {};
     this.handleThumbClick = this.handleThumbClick.bind(this);
@@ -18,6 +21,7 @@ class Photos extends PureComponent {
     this.moveGalleryForward = this.moveGalleryForward.bind(this);
     this.handleGalleryTouchStart = this.handleGalleryTouchStart.bind(this);
     this.handleGalleryTouchEnd = this.handleGalleryTouchEnd.bind(this);
+    this.toggleGalleryModal = this.toggleGalleryModal.bind(this);
   }
 
   componentDidMount() {
@@ -30,19 +34,34 @@ class Photos extends PureComponent {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.galleryModalIsOpen !== prevState.galleryModalIsOpen) {
+      document.body.classList.toggle('with-modal');
+    }
+  }
+
+  componentWillUnmount() {
+    document.body.classList.remove('with-modal');
+  }
+
   handleThumbClick(event) {
     event.preventDefault();
     const currentTarget = event.currentTarget;
     let target = event.target;
 
     while (target != currentTarget) {
-      if (target.nodeName == 'A') {
-        const photoFull = Object.assign(
-          {},
-          this.state.photoFull,
-          { src: target.href, alt: target.title }
-        );
-        this.setState({ photoFull });
+      if (
+        target.nodeName == 'A' &&
+        target.href != this.state.photoFull.src
+      ) {
+        this.setState(state => {
+          const photoFull = Object.assign(
+            {},
+            state.photoFull,
+            { src: target.href, alt: target.title }
+          );
+          return { photoFull };
+        });
         break;
       }
 
@@ -51,26 +70,28 @@ class Photos extends PureComponent {
   }
 
   moveGalleryBackward() {
-    const galleryPosition = Math.min(
-      this.state.galleryPosition + slideWidth * slideCount, 0
-    );
-
-    this.setState({ galleryPosition });
+    this.setState(state => {
+      const galleryPosition = Math.min(
+        state.galleryPosition + slideWidth * slideCount, 0
+      );
+      return { galleryPosition };
+    });
   }
 
   moveGalleryForward() {
-    const slides = document.querySelectorAll('.product-gallery-list li');
-    const galleryPosition = Math.max(
-      this.state.galleryPosition - slideWidth * slideCount,
-      -slideWidth * (slides.length - slideCount)
-    );
-
-    this.setState({ galleryPosition });
+    this.setState((state, props) => {
+      const slides = props.product.smallPhotos;
+      const galleryPosition = Math.max(
+        state.galleryPosition - slideWidth * slideCount,
+        -slideWidth * (slides.length - slideCount)
+      );
+      return { galleryPosition };
+    });
   }
 
   handleGalleryTouchStart(event) {
     const touch = event.touches[0];
-    this.swipe = { x: touch.clientX };
+    this.swipe.x = touch.clientX;
   }
 
   handleGalleryTouchEnd(event) {
@@ -82,25 +103,40 @@ class Photos extends PureComponent {
       this.moveGalleryForward()
   }
 
+  toggleGalleryModal(event) {
+    if (event.target === event.currentTarget) {
+      this.setState(state => ({ galleryModalIsOpen: !state.galleryModalIsOpen }));
+    }
+  }
+
   render() {
-    const product = this.props.product;
     const photoFull = this.state.photoFull;
-    const galleryPosition = this.state.galleryPosition;
+    const galleryProps = {
+      product: this.props.product,
+      onThumbClick: this.handleThumbClick,
+      moveBackward: this.moveGalleryBackward,
+      moveForward: this.moveGalleryForward,
+      onTouchStart: this.handleGalleryTouchStart,
+      onTouchEnd: this.handleGalleryTouchEnd,
+      position: this.state.galleryPosition
+    };
 
     return (
       <section className='product-photos'>
         <h2 className='visually-hidden'>Product photos</h2>
 
         <Image {...photoFull} className='product-photo-full' />
-        <Gallery
-          product={product}
-          onThumbClick={this.handleThumbClick}
-          moveBackward={this.moveGalleryBackward}
-          moveForward={this.moveGalleryForward}
-          onTouchStart={this.handleGalleryTouchStart}
-          onTouchEnd={this.handleGalleryTouchEnd}
-          position={galleryPosition}
-        />
+        <Gallery {...galleryProps} />
+        <OpenGalleryModal onClick={this.toggleGalleryModal} />
+
+        {
+          this.state.galleryModalIsOpen &&
+          <GalleryModal
+            close={this.toggleGalleryModal}
+            galleryProps={galleryProps}
+            photoFull={photoFull}
+          />
+        }
       </section>
     );
   }
@@ -108,7 +144,8 @@ class Photos extends PureComponent {
 
 Photos.propTypes = {
   product: PropTypes.shape({
-    photoFull: PropTypes.object.isRequired
+    photoFull: PropTypes.object.isRequired,
+    smallPhotos: PropTypes.array.isRequired
   }).isRequired
 };
 
