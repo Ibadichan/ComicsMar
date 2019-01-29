@@ -4,6 +4,7 @@ import { Router, Switch } from 'react-router-dom';
 import history from './common/history';
 import routes from './routes/index';
 import RouteWithSubRoutes from './common/components/RouteWithSubRoutes';
+import ScrollToTop from './common/components/ScrollToTop';
 
 import request from 'superagent';
 import { contentful } from './config/settings';
@@ -93,15 +94,17 @@ class Application extends Component {
       <CartAmountContext.Provider value={this.state.purchases}>
       <ProductListContext.Provider value={this.state.products}>
         <Router history={history}>
-          <StrictMode>
-            <Header />
-            <Switch>
-              {
-                routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)
-              }
-            </Switch>
-            <Footer />
-          </StrictMode>
+          <ScrollToTop>
+            <StrictMode>
+              <Header />
+              <Switch>
+                {
+                  routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)
+                }
+              </Switch>
+              <Footer />
+            </StrictMode>
+          </ScrollToTop>
         </Router>
       </ProductListContext.Provider>
       </CartAmountContext.Provider>
