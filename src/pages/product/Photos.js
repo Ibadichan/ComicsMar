@@ -4,8 +4,8 @@ import Image from '../../common/components/product/Image';
 import Gallery from './gallery/Gallery';
 import OpenGalleryModal from './gallery/OpenGalleryModal';
 import GalleryModal from './gallery/GalleryModal';
-import { productGallery } from './../../config/settings';
-const { slideWidth, slideCount, touchMinDistance } = productGallery;
+import settings from './../../config/settings';
+const { slideWidth, slideCount, touchMinDistance } = settings.productGallery;
 
 class Photos extends PureComponent {
   constructor(props) {

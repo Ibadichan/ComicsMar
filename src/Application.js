@@ -7,8 +7,8 @@ import RouteWithSubRoutes from './common/components/RouteWithSubRoutes';
 import ScrollToTop from './common/components/ScrollToTop';
 
 import request from 'superagent';
-import { contentful } from './config/settings';
-const { baseUrl, spaceId, accessToken, environment  } = contentful;
+import settings from './config/settings';
+const { baseUrl, spaceId, accessToken, environment  } = settings.contentful;
 
 import Header from './common/components/header/Header';
 import Footer from './common/components/Footer';
