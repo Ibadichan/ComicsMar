@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GalleryItem from './GalleryItem';
-import Arrow from './Arrow';
+import Arrow from './../../../common/components/slider/Arrow';
 
 function Gallery(props) {
   const {
