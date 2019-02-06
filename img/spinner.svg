@@ -1,0 +1,10 @@
+<svg
+  xmlns='http://www.w3.org/2000/svg'
+  viewBox='-250 -250 500 500'
+  width='150' height='150'
+>
+  <circle fill="#ca252a" r="240"/>
+  <circle fill="#0572b9" r="150"/>
+  <circle fill="none" r="195" stroke-width="35" stroke="#fff"/>
+  <path fill="#fff" d="M0-148.5L33.505-45.363l108.442-.006-87.735 63.736L87.728 121.5 0 57.754-87.728 121.5l33.516-103.133-87.735-63.736 108.442.006L0-148.5z"/>
+</svg>
