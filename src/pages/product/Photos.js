@@ -10,11 +10,7 @@ const { slideWidth, slideCount, touchMinDistance } = settings.productGallery;
 class Photos extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      photoFull: props.product.photoFull,
-      galleryPosition: 0,
-      galleryModalIsOpen: false
-    };
+    this.state = this.setInitialState(props);
     this.swipe = {};
     this.handleThumbClick = this.handleThumbClick.bind(this);
     this.moveGalleryBackward = this.moveGalleryBackward.bind(this);
@@ -22,6 +18,25 @@ class Photos extends PureComponent {
     this.handleGalleryTouchStart = this.handleGalleryTouchStart.bind(this);
     this.handleGalleryTouchEnd = this.handleGalleryTouchEnd.bind(this);
     this.toggleGalleryModal = this.toggleGalleryModal.bind(this);
+  }
+
+  setInitialState({ product, currentPhotoId }) {
+    const photos = product.largePhotos;
+    const currentPhoto = photos[currentPhotoId - 1];
+
+    const state = {
+      photoFull: currentPhoto || product.photoFull,
+      galleryPosition: 0,
+      galleryModalIsOpen: false
+    };
+
+    if (currentPhoto) {
+      state.galleryPosition = (
+        (currentPhotoId - (currentPhotoId < photos.length ? 1 : 2)) * -slideWidth
+      );
+    }
+
+    return state;
   }
 
   componentDidMount() {

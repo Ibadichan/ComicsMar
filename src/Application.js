@@ -12,6 +12,7 @@ const { baseUrl, spaceId, accessToken, environment  } = settings.contentful;
 
 import Header from './common/components/header/Header';
 import Footer from './common/components/Footer';
+import Spinner from './common/components/Spinner';
 
 import AddPurchaseContext from './contexts/cart/AddPurchaseContext';
 import CartAmountContext from './contexts/cart/CartAmountContext';
@@ -20,7 +21,7 @@ import ProductListContext from './contexts/products/ProductListContext';
 class Application extends Component {
   constructor(props) {
     super(props);
-    this.state = { purchases: [], products: [] };
+    this.state = { purchases: [], products: [], loading: true };
     this.addPurchase = this.addPurchase.bind(this);
   }
 
@@ -30,7 +31,7 @@ class Application extends Component {
       .query({ content_type: 'product' })
       .set('Authorization', `Bearer ${accessToken}`)
       .then(response => this.parseProducts(response.body))
-      .then(products => this.setState({ products }))
+      .then(products => this.setState(() => ({ products, loading: false })))
       .catch(error => console.error(error));
   }
 
@@ -89,6 +90,8 @@ class Application extends Component {
   }
 
   render() {
+    if (this.state.loading) { return <Spinner /> };
+
     return (
       <AddPurchaseContext.Provider value={this.addPurchase}>
       <CartAmountContext.Provider value={this.state.purchases}>
