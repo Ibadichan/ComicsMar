@@ -12,9 +12,7 @@ class Commerce extends Component {
   }
 
   handleQuantityChange(event) {
-    this.setState({
-      quantity: +event.target.value
-    });
+    this.setState(() => ({ quantity: +event.target.value }));
   }
 
   render() {
