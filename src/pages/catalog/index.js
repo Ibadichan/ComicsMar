@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Main from '../../common/components/Main';
 import ProductListContext from '../../contexts/products/ProductListContext';
 import CatalogList from './CatalogList';
@@ -13,18 +14,18 @@ function CatalogPage({ location }) {
         location.state.message &&
         <NoticeMessage text={location.state.message} />
       }
+      <SlideShow />
       <ProductListContext.Consumer>
         {
-          products => (
-            <Fragment>
-              <SlideShow />
-              <CatalogList products={products} />
-            </Fragment>
-          )
+          products => <CatalogList products={products} />
         }
       </ProductListContext.Consumer>
     </Main>
   );
 }
+
+CatalogPage.propTypes = {
+  location: PropTypes.object.isRequired
+};
 
 export default CatalogPage;

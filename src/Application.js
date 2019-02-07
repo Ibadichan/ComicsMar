@@ -86,7 +86,7 @@ class Application extends Component {
 
     if (!purchaseExists) { purchases.push(purchase); }
 
-    this.setState({ purchases });
+    this.setState(() => ({ purchases }));
   }
 
   render() {

@@ -12,7 +12,7 @@ class ContactForm extends Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState({ [name]: value });
+    this.setState(() => ({ [name]: value }));
   }
 
   render() {
