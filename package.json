@@ -7,7 +7,6 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "camelize": "^1.0.0",
     "history": "^4.7.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
