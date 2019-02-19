@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Header from './catalogItem/Header';
 import Commerce from './catalogItem/Commerce';
-import Image from '../../common/components/product/Image';
-import Link from '../../common/components/linkWrappers/Link';
-import { productPath } from '../../helpers/routes';
+import Image from '~/src/common/product/Image';
+import Link from '~/src/common/linkWrappers/Link';
+import { productPath } from '~/src/helpers/routes';
 
 function CatalogItem({ product }) {
   const { title, photoFull } = product;

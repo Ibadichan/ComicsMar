@@ -2,9 +2,9 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from '../config/actionTypes';
+} from '~/src/config/actionTypes';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = { items: [], isFetching: false };
 const assign = Object.assign;
 
 function products(state = INITIAL_STATE, action) {
@@ -19,7 +19,7 @@ function products(state = INITIAL_STATE, action) {
       );
     case FETCH_PRODUCTS_FAILURE:
       console.error(action.error);
-      return assign({}, state, { isFetching: false });
+      return assign({}, state, { isFetching: false, error: action.error });
     default:
       return state;
   }

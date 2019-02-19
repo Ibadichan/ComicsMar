@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'React';
-import Arrow from './../../../common/components/slider/Arrow';
+import Arrow from '~/src/common/slider/Arrow';
 import Slider from './Slider';
 import Controls from './Controls';
 import request from 'superagent';
-import settings from './../../../config/settings';
+import settings from '~/src/config/settings';
 const { baseUrl, spaceId, accessToken, environment  } = settings.contentful;
 const {
   slideWidth,

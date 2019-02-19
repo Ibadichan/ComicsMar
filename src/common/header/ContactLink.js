@@ -1,10 +1,10 @@
 import React from 'react';
 import NavLink from '../linkWrappers/NavLink';
-import { contactPath } from '../../../helpers/routes';
+import { contactPath } from '~/src/helpers/routes';
 
 function ContactLink() {
   return (
-    <NavLink to={contactPath()} activeClassName='disabled'>
+    <NavLink to={contactPath()} activeClassName='active'>
       Contacts
     </NavLink>
   );

@@ -1,28 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddPurchaseContext from '../../../contexts/cart/AddPurchaseContext';
 
-function BuyButton({ product, quantity }) {
+function BuyButton({ product, quantity, addProductToCart }) {
   return (
-    <AddPurchaseContext.Consumer>
-      {
-        addPurchase => (
-          <button
-            type='button'
-            className='button catalog-item-buy'
-            onClick={(event) => addPurchase(event, product, quantity)}
-          >
-            Add to Cart
-          </button>
-        )
-      }
-    </AddPurchaseContext.Consumer>
+    <button
+      type='button'
+      className='button catalog-item-buy'
+      onClick={() => addProductToCart(product, quantity)}
+    >
+      Add to Cart
+    </button>
   );
 }
 
 BuyButton.propTypes = {
   product: PropTypes.object.isRequired,
-  quantity: PropTypes.number.isRequired
+  quantity: PropTypes.number.isRequired,
+  addProductToCart: PropTypes.func.isRequired
 };
 
 export default BuyButton;

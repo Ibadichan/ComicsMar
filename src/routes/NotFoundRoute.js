@@ -1,4 +1,4 @@
-import NotFoundPage from '../pages/notFound/index';
+import NotFoundPage from '~/src/pages/notFound';
 
 const NotFoundRoute  = {
   component: NotFoundPage

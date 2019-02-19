@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from '../../common/components/product/Image';
+import Image from '~/src/common/product/Image';
 
 function PurchaseItem({ purchase }) {
   const { title, photoFull, price, quantity } = purchase;

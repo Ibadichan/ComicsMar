@@ -1,10 +1,10 @@
 import request from 'superagent';
-import settings from '../config/settings';
+import settings from '~/src/config/settings';
 import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from '../config/actionTypes';
+} from '~/src/config/actionTypes';
 
 const {
   baseUrl,

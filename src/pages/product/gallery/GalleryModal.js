@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Gallery from './Gallery';
-import Image from '../../../common/components/product/Image';
+import Image from '~/src/common/product/Image';
 import CloseGalleryModal from './CloseGalleryModal';
 
 function GalleryModal({ close, galleryProps, photoFull }) {

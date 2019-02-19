@@ -1,5 +1,5 @@
-import { contactPath } from '../helpers/routes';
-import ContactPage from '../pages/contacts/index';
+import { contactPath } from '~/src/helpers/routes';
+import ContactPage from '~/src/pages/contacts';
 
 const ContactRoute = {
   exact: true,
