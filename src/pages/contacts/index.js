@@ -1,14 +1,14 @@
 import React from 'react';
-import Main from '../../common/components/Main';
+import PageLayout from '~/src/common/PageLayout';
 import ContactList from './ContactList';
 import ContactForm from './ContactForm';
 
 function ContactPage() {
   return (
-    <Main headerText='Contact Us'>
+    <PageLayout title='Contact Us'>
       <ContactList />
       <ContactForm />
-    </Main>
+    </PageLayout>
   );
 }
 

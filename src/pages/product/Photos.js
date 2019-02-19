@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Image from '../../common/components/product/Image';
+import Image from '~/src/common/product/Image';
 import Gallery from './gallery/Gallery';
 import OpenGalleryModal from './gallery/OpenGalleryModal';
 import GalleryModal from './gallery/GalleryModal';
-import settings from './../../config/settings';
+import settings from '~/src/config/settings';
 const { slideWidth, slideCount, touchMinDistance } = settings.productGallery;
 
 class Photos extends PureComponent {

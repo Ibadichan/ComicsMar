@@ -1,29 +1,43 @@
-import React from 'react';
-import Main from '../../common/components/Main';
-import PurchaseList from './PurchaseList';
-import CartAmountContext from '../../contexts/cart/CartAmountContext';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { rootPath } from '../../helpers/routes';
+import { rootPath } from '~/src/helpers/routes';
+import PageLayout from '~/src/common/PageLayout';
+import PurchaseList from './PurchaseList';
 
-function CartPage() {
-  return (
-    <Main headerText='Products added to cart:'>
-      <CartAmountContext.Consumer>
+class CartPage extends Component {
+  render() {
+    const purchases = this.props.purchases;
+
+    return (
+      <PageLayout title='Products added to cart:'>
         {
-          purchases => (
-            purchases.length ?
-              <PurchaseList purchases={purchases} /> :
-              <Redirect
-                to={{
-                  pathname: rootPath(),
-                  state: { message: 'Cart is empty, add something' }
-                }}
-              />
-          )
+          purchases.length ?
+            <PurchaseList purchases={purchases} /> :
+            <Redirect
+              to={{
+                pathname: rootPath(),
+                state: { message: 'Cart is empty, add something' }
+              }}
+            />
         }
-      </CartAmountContext.Consumer>
-    </Main>
-  );
+      </PageLayout>
+    );
+  }
 }
 
-export default CartPage;
+CartPage.propTypes = {
+  purchases: PropTypes.array.isRequired
+};
+
+function mapStateToProps({ purchases }) {
+  return { purchases };
+}
+
+const connectedCartPage = connect(
+  mapStateToProps,
+  null
+)(CartPage);
+
+export default connectedCartPage;

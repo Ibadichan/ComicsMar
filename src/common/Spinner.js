@@ -1,5 +1,5 @@
 import React from 'react';
-import spinner from '../../../img/spinner.svg';
+import spinner from '~/img/spinner.svg';
 
 function Spinner() {
   return (

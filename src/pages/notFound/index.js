@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../../common/components/Main';
+import Main from '~/src/common/Main';
 
 function NotFoundPage({ location, history }) {
   return (

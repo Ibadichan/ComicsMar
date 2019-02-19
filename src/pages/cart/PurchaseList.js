@@ -1,6 +1,6 @@
 import React from 'react';
-import PurchaseItem from './PurchaseItem';
 import PropTypes from 'prop-types';
+import PurchaseItem from './PurchaseItem';
 
 function PurchaseList({ purchases }) {
   return (

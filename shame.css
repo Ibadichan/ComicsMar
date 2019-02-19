@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -43,25 +45,205 @@ body.with-modal {
 }
 
 .main-header {
+  position: relative;
+  width: 100%;
+  padding-top: 15px;
+  margin-bottom: 50px;
   background-color: black;
+}
+
+.main-navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-navigation-content {
+  max-height: 0;
+  width: 100%;
+  background-color: #242424;
+  overflow: hidden;
+  transition: max-height 0.15s ease-out;
+}
+
+.main-header.opened .main-navigation-content {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
+
+.main-header-logo {
+  display: block;
+  width: 250px;
+  height: 94px;
+  margin-bottom: 15px;
+}
+
+.toggle-main-navigation-content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  padding: 0;
+  background-color: black;
+  border: 0;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  transform: translate(-50%, 100%);
+  cursor: pointer;
+}
+
+.toggle-main-navigation-content:active,
+.main-header.opened .toggle-main-navigation-content {
+  background-color: #242424;
+}
+
+.toggle-main-navigation-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: 0;
+  border-left: 0;
+  border-radius: 3px;
+  transform: translateX(-50%) rotate(45deg) translate(-4px, -4px);
 }
 
 .site-navigation,
 .user-navigation {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.site-navigation a,
-.user-navigation a {
-  color: white;
+.site-navigation li,
+.user-navigation li {
+  border-bottom: 1px solid white;
 }
 
-.header-logo {
+.user-navigation li:last-child {
+  border-bottom: 0;
+}
+
+.site-navigation a,
+.user-navigation a {
   display: block;
-  width: 250px;
-  height: 94px;
+  padding: 10px 20px;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cart-link-counter {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 25px;
+}
+
+.cart-link-counter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-image: url('./img/cart.svg');
+  transform: translateY(-50%);
+}
+
+.cart-link-counter::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.main-footer {
+  width: 100%;
+  padding: 10px 0;
+  color: white;
+  background-color: black;
+}
+
+.social-list-wrapper {
+  width: 160px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+.social-list-wrapper b {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.social-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[class^='social-button'] {
+  display: block;
+  width: 45px;
+  height: 45px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.social-button-facebook {
+  background-color: rgb(66, 85, 150);
+  background-image: url('./img/facebook-icon.svg');
+}
+
+.social-button-vkontakte {
+  background-color: rgba(80, 106, 144);
+  background-image: url('./img/vkontakte-icon.svg');
+}
+
+.social-button-twitter {
+  background-color: rgb(98, 169, 236);
+  background-image: url('./img/twitter-icon.svg');
+}
+
+.site-is-fake {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-is-fake a {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  color: white;
+  text-decoration: underline;
+}
+
+.site-is-fake a:hover,
+.site-is-fake a:focus {
+  text-decoration: none;
 }
 
 .spinner-loader {
@@ -181,13 +363,20 @@ body.with-modal {
 .product-gallery-item {
   flex-shrink: 0;
   width: 86px;
+  height: 129px;
   margin-right: 19px;
+  background-color: lightgray;
+}
+
+.product-photo-full {
+  width: 300px;
+  height: 450px;
+  background-color: lightgray;
 }
 
 .product-photo-full img,
 .product-gallery-item img {
   border-radius: 5px;
-  background-color: lightgray;
 }
 
 .open-gallery-modal {
@@ -262,8 +451,6 @@ body.with-modal {
 }
 
 .product-photos-modal .product-photo-full {
-  width: 300px;
-  height: 450px;
   margin: 0 auto 20px;
 }
 
