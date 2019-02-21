@@ -6,7 +6,7 @@ import PageLayout from '~/src/common/PageLayout';
 import Spinner from '~/src/common/Spinner';
 import CatalogList from './CatalogList';
 import NoticeMessage from './NoticeMessage';
-import SlideShow from './slideShow/SlideShow';
+import Slideshow from './Slideshow';
 
 class CatalogPage extends Component {
   componentDidMount() {
@@ -25,7 +25,7 @@ class CatalogPage extends Component {
           location.state.message &&
           <NoticeMessage text={location.state.message} />
         }
-        <SlideShow />
+        <Slideshow />
         <CatalogList products={products} />
       </PageLayout>
     );
@@ -40,10 +40,9 @@ CatalogPage.propTypes = {
 };
 
 function mapStateToProps({ products }) {
-  const { items, isFetching } = products;
   return {
-    isFetching,
-    products: items
+    isFetching: products.isFetching,
+    products: products.items
   };
 }
 

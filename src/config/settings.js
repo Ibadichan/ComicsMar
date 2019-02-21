@@ -5,7 +5,7 @@ const settings = {
     touchMinDistance: 50
   },
 
-  slideShow: {
+  slideshow: {
     slideWidth: 100,
     unitOfMeasurement: '%',
     touchMinDistance: 50,
