@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addProductToCart } from '~/src/actions/purchases';
-import Price from './Price';
-import Quantity from './Quantity';
-import BuyButton from './BuyButton';
+import CommerceContent from './CommerceContent';
 
 class Commerce extends PureComponent {
   constructor(props) {
@@ -18,23 +16,13 @@ class Commerce extends PureComponent {
   }
 
   render() {
-    const product = this.props.product;
-    const quantity = this.state.quantity;
-
     return (
-      <div className='catalog-item-сommerce'>
-        <Price>{product.price}</Price>
-        <Quantity
-          productId={product.id}
-          value={quantity}
-          onChange={this.handleQuantityChange}
-        />
-        <BuyButton
-          product={product}
-          quantity={quantity}
-          addProductToCart={this.props.addProductToCart}
-        />
-      </div>
+      <CommerceContent
+        product={this.props.product}
+        quantity={this.state.quantity}
+        onQuantityChange={this.handleQuantityChange}
+        addProductToCart={this.props.addProductToCart}
+      />
     );
   }
 }

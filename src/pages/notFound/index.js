@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Main from '~/src/common/Main';
 
 function NotFoundPage({ location, history }) {
@@ -9,5 +10,14 @@ function NotFoundPage({ location, history }) {
     </Main>
   );
 }
+
+NotFoundPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired
+  }).isRequired
+};
 
 export default NotFoundPage;

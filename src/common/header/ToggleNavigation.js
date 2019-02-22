@@ -9,7 +9,7 @@ function ToggleNavigation({ onClick }) {
       onClick={onClick}
     >
       <span className='visually-hidden'>
-        Open Navigation
+        Toggle Navigation
       </span>
     </button>
   );
