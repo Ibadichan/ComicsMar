@@ -3,27 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { rootPath } from '~/src/helpers/routes';
-import PageLayout from '~/src/common/PageLayout';
-import PurchaseList from './PurchaseList';
+import PageContent from './PageContent';
 
 class CartPage extends Component {
   render() {
     const purchases = this.props.purchases;
+    const redirect = {
+      pathname: rootPath(),
+      state: { message: 'Cart is empty, add something' }
+    };
 
-    return (
-      <PageLayout title='Products added to cart:'>
-        {
-          purchases.length ?
-            <PurchaseList purchases={purchases} /> :
-            <Redirect
-              to={{
-                pathname: rootPath(),
-                state: { message: 'Cart is empty, add something' }
-              }}
-            />
-        }
-      </PageLayout>
-    );
+    if (purchases.length == 0) {
+      return <Redirect to={redirect} />;
+    } else {
+      return <PageContent purchases={purchases} />;
+    }
   }
 }
 

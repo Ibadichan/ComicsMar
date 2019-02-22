@@ -1,39 +1,27 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CartLink from './CartLink';
-import HomeLink from './HomeLink';
-import ContactLink from './ContactLink';
-import ToggleNavigation from './ToggleNavigation';
+import HeaderContent from './HeaderContent';
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.header = createRef();
-    this.toggleNavigation = this.toggleNavigation.bind(this);
+    this.handleNavigationToggle = this.handleNavigationToggle.bind(this);
   }
 
-  toggleNavigation() {
+  handleNavigationToggle() {
     const header = this.header.current;
     header && header.classList.toggle('opened');
   }
 
   render() {
     return (
-      <header className='main-header' ref={this.header}>
-        <nav className='main-navigation'>
-          <HomeLink />
-          <div className='main-navigation-content'>
-            <ul className='site-navigation'>
-              <li><ContactLink /></li>
-            </ul>
-            <ul className='user-navigation'>
-              <li><CartLink purchases={this.props.purchases} /></li>
-            </ul>
-          </div>
-        </nav>
-        <ToggleNavigation onClick={this.toggleNavigation} />
-      </header>
+      <HeaderContent
+        ref={this.header}
+        purchases={this.props.purchases}
+        toggleNavigation={this.handleNavigationToggle}
+      />
     );
   }
 }

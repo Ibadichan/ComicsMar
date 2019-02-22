@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchProducts } from '~/src/actions/products';
-import PageLayout from '~/src/common/PageLayout';
 import Spinner from '~/src/common/Spinner';
-import CatalogList from './CatalogList';
-import NoticeMessage from './NoticeMessage';
-import Slideshow from './Slideshow';
+import PageContent from './PageContent';
 
 class CatalogPage extends Component {
   componentDidMount() {
@@ -16,19 +13,11 @@ class CatalogPage extends Component {
   render() {
     const { location, products, isFetching } = this.props;
 
-    if (isFetching) { return <Spinner /> };
-
-    return (
-      <PageLayout title='ComicsMar - World of comics'>
-        {
-          location.state &&
-          location.state.message &&
-          <NoticeMessage text={location.state.message} />
-        }
-        <Slideshow />
-        <CatalogList products={products} />
-      </PageLayout>
-    );
+    if (isFetching) {
+      return <Spinner />;
+    } else {
+      return <PageContent location={location} products={products} />;
+    }
   }
 }
 

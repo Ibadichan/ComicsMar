@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'React';
 import PropTypes from 'prop-types';
+import Slider from './slideshow/Slider';
 import { connect } from 'react-redux';
 import {
   moveSlideshowSelectively,
@@ -8,9 +9,6 @@ import {
   fetchSlideshowPhotos
 } from '~/src/actions/slideshow';
 import settings from '~/src/config/settings';
-import Arrow from '~/src/common/slider/Arrow';
-import Slider from './slideshow/Slider';
-import Controls from './slideshow/Controls';
 const {
   slideWidth,
   unitOfMeasurement,
@@ -97,39 +95,17 @@ class Slideshow extends PureComponent {
 
   render() {
     return (
-      <section className='slideshow'>
-        <h2 className='visually-hidden'>Popular product</h2>
-
-        <div className='slideshow-container'>
-          <Arrow
-            className='slideshow-prev'
-            onClick={this.goToPrevSlide}
-          >
-            Prev
-          </Arrow>
-
-          <Arrow
-            className='slideshow-next'
-            onClick={this.goToNextSlide}
-          >
-            Next
-          </Arrow>
-
-          <Slider
-            slides={this.props.slides}
-            sliderPosition={this.calculateSliderPosition()}
-            unitOfMeasurement={unitOfMeasurement}
-            onTouchStart={this.handleTouchStart}
-            onTouchEnd={this.handleTouchEnd}
-          />
-
-          <Controls
-            currentIndex={this.props.currentIndex}
-            slides={this.props.slides}
-            onClick={this.goToSlide}
-          />
-        </div>
-      </section>
+      <Slider
+        goToSlide={this.goToSlide}
+        goToPrevSlide={this.goToPrevSlide}
+        goToNextSlide={this.goToNextSlide}
+        slides={this.props.slides}
+        sliderPosition={this.calculateSliderPosition()}
+        unitOfMeasurement={unitOfMeasurement}
+        onTouchStart={this.handleTouchStart}
+        onTouchEnd={this.handleTouchEnd}
+        currentIndex={this.props.currentIndex}
+      />
     );
   }
 }

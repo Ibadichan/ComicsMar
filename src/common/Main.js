@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Main({ headerText, children }) {
   return (
     <main>
-      <h1 className='page-title'>{headerText}</h1>
+      <h1>{headerText}</h1>
       {children}
     </main>
   );
