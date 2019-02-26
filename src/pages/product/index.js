@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import PageLayout from '~/src/common/PageLayout';
-import Photos from './Photos';
-import Info from './Info';
+import PageContent from './PageContent';
 
 class ProductPage extends Component {
   findProduct() {
@@ -16,14 +14,11 @@ class ProductPage extends Component {
   render() {
     const product = this.findProduct();
 
-    if (!product) { return <Redirect to='/404' /> };
-
-    return (
-      <PageLayout title={product.title}>
-        <Photos product={product} />
-        <Info product={product} />
-      </PageLayout>
-    );
+    if (product) {
+      return <PageContent product={product} />;
+    } else {
+      return <Redirect to='/404' />;
+    };
   }
 }
 
@@ -32,8 +27,8 @@ ProductPage.propTypes = {
   products: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state) {
-  return { products: state.products.items };
+function mapStateToProps({ products }) {
+  return { products: products.items };
 }
 
 const connectedProductPage = connect(

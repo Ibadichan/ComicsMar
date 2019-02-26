@@ -273,9 +273,15 @@ body.with-modal {
   padding: 0;
 }
 
+.catalog-item-image {
+  width: 300px;
+  height: 450px;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
 .catalog-item-image img {
   border-radius: 5px;
-  background-color: lightgray;
 }
 
 .product-gallery {
@@ -366,12 +372,14 @@ body.with-modal {
   height: 129px;
   margin-right: 19px;
   background-color: lightgray;
+  border-radius: 5px;
 }
 
 .product-photo-full {
   width: 300px;
   height: 450px;
   background-color: lightgray;
+  border-radius: 5px;
 }
 
 .product-photo-full img,
@@ -469,6 +477,7 @@ body.with-modal {
 
 .slideshow-list-wrapper {
   width: 100%;
+  border-radius: 5px;
   overflow: hidden;
 }
 
