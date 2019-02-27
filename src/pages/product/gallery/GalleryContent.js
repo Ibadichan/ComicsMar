@@ -20,14 +20,6 @@ function GalleryContent(props) {
     galleryModalIsOpen
   } = props;
 
-  const galleryListProps = {
-    product,
-    onThumbClick,
-    onTouchStart,
-    onTouchEnd,
-    position
-  };
-
   return (
     <section className='product-photos'>
       <h2 className='visually-hidden'>Product photos</h2>
@@ -39,7 +31,13 @@ function GalleryContent(props) {
           Prev
         </Arrow>
 
-        <GalleryList {...galleryListProps} />
+        <GalleryList
+          product={product}
+          onThumbClick={onThumbClick}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          position={position}
+        />
 
         <Arrow onClick={moveForward} className='product-gallery-next'>
           Next
