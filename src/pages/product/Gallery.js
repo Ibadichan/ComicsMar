@@ -60,7 +60,12 @@ class Gallery extends PureComponent {
         target.href != this.props.photoFull.src
       ) {
         this.props.clickOnProductThumb(
-          { src: target.href, alt: target.title }
+          {
+            src: target.href,
+            alt: target.title,
+            width: 300,
+            height: 450
+          }
         );
         break;
       }
@@ -105,20 +110,20 @@ class Gallery extends PureComponent {
   }
 
   render() {
-    const galleryProps = {
-      photoFull: this.props.photoFull,
-      product: this.props.product,
-      onThumbClick: this.handleThumbClick,
-      moveBackward: this.moveGalleryBackward,
-      moveForward: this.moveGalleryForward,
-      onTouchStart: this.handleGalleryTouchStart,
-      onTouchEnd: this.handleGalleryTouchEnd,
-      position: this.props.galleryPosition,
-      toggleGalleryModal: this.toggleGalleryModal,
-      galleryModalIsOpen: this.props.galleryModalIsOpen
-    };
-
-    return <GalleryContent {...galleryProps} />;
+    return (
+      <GalleryContent
+        photoFull={this.props.photoFull}
+        product={this.props.product}
+        onThumbClick={this.handleThumbClick}
+        moveBackward={this.moveGalleryBackward}
+        moveForward={this.moveGalleryForward}
+        onTouchStart={this.handleGalleryTouchStart}
+        onTouchEnd={this.handleGalleryTouchEnd}
+        position={this.props.galleryPosition}
+        toggleGalleryModal={this.toggleGalleryModal}
+        galleryModalIsOpen={this.props.galleryModalIsOpen}
+      />
+    );
   }
 }
 
@@ -137,10 +142,16 @@ Gallery.propTypes = {
 };
 
 function mapStateToProps({ productGallery }) {
+  const {
+    photoFull,
+    galleryPosition,
+    galleryModalIsOpen
+  } = productGallery;
+
   return {
-    photoFull: productGallery.photoFull,
-    galleryPosition: productGallery.galleryPosition,
-    galleryModalIsOpen: productGallery.galleryModalIsOpen
+    photoFull,
+    galleryPosition,
+    galleryModalIsOpen
   };
 }
 

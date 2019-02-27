@@ -14,7 +14,12 @@ const assign = Object.assign;
 
 function productGallery(state = INITIAL_STATE,  action) {
   let galleryPosition;
-  const { slideWidth, slideCount, slidesLength, photoFull } = action;
+  const {
+    slideWidth,
+    slideCount,
+    slidesLength,
+    photoFull
+  } = action;
 
   switch (action.type) {
     case CLICK_ON_PRODUCT_THUMB:

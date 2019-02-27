@@ -19,14 +19,6 @@ function GalleryModal(props) {
     position
   } = props;
 
-  const galleryListProps = {
-    product,
-    onThumbClick,
-    onTouchStart,
-    onTouchEnd,
-    position
-  };
-
   return (
     createPortal(
       <div className='modal-overlay' onClick={toggleGalleryModal}>
@@ -40,7 +32,13 @@ function GalleryModal(props) {
               Prev
             </Arrow>
 
-            <GalleryList {...galleryListProps} />
+            <GalleryList
+              product={product}
+              onThumbClick={onThumbClick}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+              position={position}
+            />
 
             <Arrow onClick={moveForward} className='product-gallery-next'>
               Next
