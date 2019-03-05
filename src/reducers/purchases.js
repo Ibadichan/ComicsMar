@@ -1,4 +1,7 @@
-import { ADD_PRODUCT_TO_CART } from '~/src/config/actionTypes';
+import {
+  ADD_PRODUCT_TO_CART,
+  INITIALIZE_CART
+} from '~/src/config/actionTypes';
 const INITIAL_STATE = [];
 
 function purchases(state = INITIAL_STATE, action) {
@@ -6,6 +9,8 @@ function purchases(state = INITIAL_STATE, action) {
     case ADD_PRODUCT_TO_CART:
       const { product, quantity } = action;
       return addProductToCart(state, product, quantity);
+    case INITIALIZE_CART:
+      return action.purchases;
     default:
       return state;
   }
