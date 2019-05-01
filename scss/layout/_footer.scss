@@ -1,0 +1,136 @@
+.main-footer {
+  padding: 15px 0;
+  color: $white;
+  background-color: $black;
+
+  .main-footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-list-wrapper {
+    width: 170px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
+.social-list-wrapper b {
+  display: block;
+  margin-bottom: 15px;
+  @include calculate_font(20px, 24px, false, 400);
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li:not(:nth-child(3n)) {
+    margin-right: 10px;
+  }
+
+  [class^='social-button'] {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+
+  .social-button-facebook {
+    background-color: $facebook;
+    background-image: url('~/img/facebook-icon.svg');
+
+    @include on_event {
+      background-color: $facebook_active;
+    }
+  }
+
+  .social-button-vkontakte {
+    background-color: $vkontakte;
+    background-image: url('~/img/vkontakte-icon.svg');
+
+    @include on_event {
+      background-color: $vkontakte_active;
+    }
+  }
+
+  .social-button-twitter {
+    background-color: $twitter;
+    background-image: url('~/img/twitter-icon.svg');
+
+    @include on_event {
+      background-color: $twitter_active;
+    }
+  }
+}
+
+.site-is-fake {
+  width: 300px;
+  margin: 0;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: $white;
+    text-decoration: underline;
+
+    @include on_event {
+      text-decoration: none;
+    }
+  }
+}
+
+@include media_query('tablet') {
+  .main-footer {
+    padding: 30px 0;
+
+    .main-footer-container {
+      flex-direction: row;
+      justify-content: space-between;
+      width: map_get($breakpoints, 'tablet');
+      padding: 0 10px;
+      margin: 0 auto;
+    }
+
+    .social-list-wrapper {
+      margin-bottom: 0;
+    }
+  }
+
+  .social-list-wrapper b {
+    display: none;
+  }
+}
+
+@include media_query('laptop') {
+  .main-footer {
+    .main-footer-container {
+      width: map_get($breakpoints, 'laptop');
+    }
+
+    .social-list-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 350px;
+    }
+
+    .social-list {
+      width: 170px;
+    }
+  }
+
+  .social-list-wrapper b {
+    display: block;
+    margin-bottom: 0;
+  }
+}
