@@ -12,6 +12,8 @@ const HeaderContent = forwardRef((props, ref) => (
       <div className='main-navigation-content'>
         <ul className='site-navigation'>
           <li><ContactLink /></li>
+          <li><a href="javascript:void(0);">About</a></li>
+          <li><a href="javascript:void(0);">Team</a></li>
         </ul>
         <ul className='user-navigation'>
           <li><CartLink purchases={props.purchases} /></li>

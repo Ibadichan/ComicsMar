@@ -1,0 +1,30 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: normal 400 14px/16.8px 'Trebuchet MS', Tahoma, sans-serif;
+  color: $default_text;
+  background-color: $white;
+
+  .with-modal {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,21 @@
+// SASS 7-1 pattern
+
+@import "utilities/colors";
+@import "utilities/variables";
+@import "utilities/functions";
+@import "utilities/mixins";
+
+@import "vendors/normalize";
+
+@import "base/animations";
+@import "base/base";
+@import "base/helpers";
+
+@import "themes/default";
+
+@import "layout/header";
+@import "layout/footer";
+
+@import "components/spinner_loader";
+
+@import "pages/inner";
