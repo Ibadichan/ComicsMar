@@ -1,0 +1,17 @@
+.button {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  padding: 10px 25px;
+  font: inherit;
+  @include calculate_font(false, false, $white, 700);
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  background-color: $black;
+  cursor: pointer;
+
+  @include on_event {
+    background-color: $button_active;
+  }
+}

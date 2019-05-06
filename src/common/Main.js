@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Main({ headerText, children }) {
+function Main({ headerText, children, className }) {
   return (
-    <main>
+    <main className={className}>
       <h1>{headerText}</h1>
       {children}
     </main>
@@ -12,6 +12,7 @@ function Main({ headerText, children }) {
 
 Main.propTypes = {
   headerText: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node
 };
 
