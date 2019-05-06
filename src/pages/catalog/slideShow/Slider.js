@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Arrow from '~/src/common/slider/Arrow';
+import Button from '~/src/common/Button';
 import SlideList from './SlideList';
 import Controls from './Controls';
 
@@ -22,19 +22,13 @@ function Slider(props) {
       <h2 className='visually-hidden'>Popular product</h2>
 
       <div className='slideshow-container'>
-        <Arrow
+        <Button
           className='slideshow-prev'
           onClick={goToPrevSlide}
+          hideText
         >
           Prev
-        </Arrow>
-
-        <Arrow
-          className='slideshow-next'
-          onClick={goToNextSlide}
-        >
-          Next
-        </Arrow>
+        </Button>
 
         <SlideList
           slides={slides}
@@ -43,6 +37,14 @@ function Slider(props) {
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         />
+
+        <Button
+          className='slideshow-next'
+          onClick={goToNextSlide}
+          hideText
+        >
+          Next
+        </Button>
 
         <Controls
           currentIndex={currentIndex}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '~/src/common/Button';
 
 function Controls({ currentIndex, slides, onClick }) {
   return (
@@ -7,13 +8,15 @@ function Controls({ currentIndex, slides, onClick }) {
       {
         slides.map((slide, i) => (
           <li key={slide.id}>
-            <button
-              type='button'
-              className={`slideshow-control ${currentIndex == i ? 'selected' : ''}`}
-              data-index={i}
+            <Button
+              className={
+                `slideshow-control ${currentIndex == i ? 'selected' : ''}`
+              }
+              data={{ index: i }}
+              hideText
             >
-              <span className='visually-hidden'>{i + 1} slide</span>
-            </button>
+              {`${i + 1} slide`}
+            </Button>
           </li>
         ))
       }

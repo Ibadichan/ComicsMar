@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Arrow from '~/src/common/slider/Arrow';
+import Button from '~/src/common/Button';
 import Image from '~/src/common/product/Image';
 import GalleryList from './GalleryList';
-import OpenGalleryModal from './OpenGalleryModal';
 import GalleryModal from './GalleryModal';
 
 function GalleryContent(props) {
@@ -27,9 +26,13 @@ function GalleryContent(props) {
       <Image {...photoFull} className='product-photo-full' />
 
       <div className='product-gallery'>
-        <Arrow onClick={moveBackward} className='product-gallery-prev'>
+        <Button
+          className='product-gallery-prev'
+          onClick={moveBackward}
+          hideText
+        >
           Prev
-        </Arrow>
+        </Button>
 
         <GalleryList
           product={product}
@@ -39,12 +42,18 @@ function GalleryContent(props) {
           position={position}
         />
 
-        <Arrow onClick={moveForward} className='product-gallery-next'>
+        <Button
+          className='product-gallery-next'
+          onClick={moveForward}
+          hideText
+        >
           Next
-        </Arrow>
+        </Button>
       </div>
 
-      <OpenGalleryModal onClick={toggleGalleryModal} />
+      <Button className='button' onClick={toggleGalleryModal}>
+        Open on fullscreen
+      </Button>
 
       {
         galleryModalIsOpen && <GalleryModal {...props} />
