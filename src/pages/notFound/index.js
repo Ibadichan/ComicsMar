@@ -5,9 +5,17 @@ import Button from '~/src/common/Button';
 
 function NotFoundPage({ location, history }) {
   return (
-    <Main headerText='Oops! Nothing to see here'>
-      <p>{`You found a broken link '${location.pathname}'`}</p>
-      <Button onClick={history.goBack}>Back</Button>
+    <Main className='not-found-page' headerText='Page not found'>
+      <p>
+        You found a broken link
+        <b className='broken-link'>'{location.pathname}'</b>
+      </p>
+      <Button
+        className='button'
+        onClick={history.goBack}
+      >
+        Go Back
+      </Button>
     </Main>
   );
 }
