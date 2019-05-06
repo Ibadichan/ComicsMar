@@ -14,8 +14,11 @@
 @import "themes/default";
 
 @import "layout/header";
+@import "layout/main";
 @import "layout/footer";
 
 @import "components/spinner_loader";
 
 @import "pages/inner";
+
+@import "./shame.scss";

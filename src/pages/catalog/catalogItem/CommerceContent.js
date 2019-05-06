@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Price from './Price';
 import Quantity from './Quantity';
-import BuyButton from './BuyButton';
+import Button from '~/src/common/Button';
 
 function CommerceContent(props) {
   const {
@@ -20,11 +20,12 @@ function CommerceContent(props) {
         value={quantity}
         onChange={onQuantityChange}
       />
-      <BuyButton
-        product={product}
-        quantity={quantity}
-        addProductToCart={addProductToCart}
-      />
+      <Button
+        className='button catalog-item-buy'
+        onClick={() => addProductToCart(product, quantity)}
+      >
+        Add to Cart
+      </Button>
     </div>
   );
 }

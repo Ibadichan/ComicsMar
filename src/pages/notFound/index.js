@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '~/src/common/Main';
+import Button from '~/src/common/Button';
 
 function NotFoundPage({ location, history }) {
   return (
     <Main headerText='Oops! Nothing to see here'>
       <p>{`You found a broken link '${location.pathname}'`}</p>
-      <a href='#' onClick={history.goBack}>Back</a>
+      <Button onClick={history.goBack}>Back</Button>
     </Main>
   );
 }

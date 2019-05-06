@@ -1,10 +1,9 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Arrow from '~/src/common/slider/Arrow';
+import Button from '~/src/common/Button'
 import Image from '~/src/common/product/Image';
 import GalleryList from './GalleryList';
-import CloseGalleryModal from './CloseGalleryModal';
 
 function GalleryModal(props) {
   const {
@@ -28,9 +27,13 @@ function GalleryModal(props) {
           <Image {...photoFull} className='product-photo-full' />
 
           <div className='product-gallery'>
-            <Arrow onClick={moveBackward} className='product-gallery-prev'>
+            <Button
+              className='product-gallery-prev'
+              onClick={moveBackward}
+              hideText
+            >
               Prev
-            </Arrow>
+            </Button>
 
             <GalleryList
               product={product}
@@ -40,12 +43,22 @@ function GalleryModal(props) {
               position={position}
             />
 
-            <Arrow onClick={moveForward} className='product-gallery-next'>
+            <Button
+              className='product-gallery-next'
+              onClick={moveForward}
+              hideText
+            >
               Next
-            </Arrow>
+            </Button>
           </div>
 
-          <CloseGalleryModal onClick={toggleGalleryModal} />
+          <Button
+            className='modal-close'
+            onClick={toggleGalleryModal}
+            hideText
+          >
+            Close
+          </Button>
         </section>
       </div>,
       document.getElementById('modal-root')
