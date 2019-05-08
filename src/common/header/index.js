@@ -1,42 +1,31 @@
-import React, { Component, createRef } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import HeaderContent from './HeaderContent';
+import React, { createRef } from "react";
+import PropTypes from "prop-types";
+import Button from "../Button";
+import Navigation from "./components/Navigation";
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.header = createRef();
-    this.handleNavigationToggle = this.handleNavigationToggle.bind(this);
+function Header({ purchases }) {
+  const header = createRef();
+
+  function handleNavigationToggle() {
+    header.current.classList.toggle("opened");
   }
 
-  handleNavigationToggle() {
-    const header = this.header.current;
-    header && header.classList.toggle('opened');
-  }
-
-  render() {
-    return (
-      <HeaderContent
-        ref={this.header}
-        purchases={this.props.purchases}
-        toggleNavigation={this.handleNavigationToggle}
-      />
-    );
-  }
+  return (
+    <header className="main-header" ref={header}>
+      <Navigation purchases={purchases} />
+      <Button
+        className="toggle-main-navigation-content"
+        onClick={handleNavigationToggle}
+        hideText
+      >
+        Toggle Navigation
+      </Button>
+    </header>
+  );
 }
 
 Header.propTypes = {
   purchases: PropTypes.array.isRequired
 };
 
-function mapStateToProps({ purchases }) {
-  return { purchases };
-}
-
-const connectedHeader = connect(
-  mapStateToProps,
-  null
-)(Header);
-
-export default connectedHeader;
+export default Header;
