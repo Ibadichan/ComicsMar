@@ -113,6 +113,10 @@
     color: $white;
     text-align: center;
     text-transform: uppercase;
+
+    &.active {
+      background-color: $current_page_link;
+    }
   }
 }
 
@@ -243,6 +247,11 @@
 
       @include on_event {
         background-color: $header_active;
+      }
+
+      &.active {
+        background-color: $current_page_link;
+        cursor: default;
       }
     }
   }
