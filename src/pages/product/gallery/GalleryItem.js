@@ -1,33 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import WrappedImage from "~/src/common/images/WrappedImage";
 
 function GalleryItem({ largePhoto, smallPhoto }) {
   return (
-    <li className='product-gallery-item'>
-      <a href={largePhoto.src} title={largePhoto.alt}>
-        <img {...smallPhoto} />
-      </a>
+    <li className="product-gallery-item">
+      <WrappedImage
+        image={smallPhoto}
+        wrapper={{
+          node: "a",
+          attributes: { href: largePhoto.src, title: largePhoto.alt }
+        }}
+      />
     </li>
   );
 }
 
-const galleryPhotoPropTypes = PropTypes.shape({
-  src: PropTypes.string.isRequired,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
-  alt: PropTypes.string
-}).isRequired;
-
-
 GalleryItem.propTypes = {
-  largePhoto: galleryPhotoPropTypes,
-  smallPhoto: galleryPhotoPropTypes
+  largePhoto: PropTypes.object.isRequired,
+  smallPhoto: PropTypes.object.isRequired
 };
 
 export default GalleryItem;

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Button from '~/src/common/Button';
-import Image from '~/src/common/product/Image';
-import GalleryList from './GalleryList';
-import GalleryModal from './GalleryModal';
+import React from "react";
+import PropTypes from "prop-types";
+import Button from "~/src/common/Button";
+import WrappedImage from "~/src/common/images/WrappedImage";
+import GalleryList from "./GalleryList";
+import GalleryModal from "./GalleryModal";
 
 function GalleryContent(props) {
   const {
@@ -20,14 +20,17 @@ function GalleryContent(props) {
   } = props;
 
   return (
-    <section className='product-photos'>
-      <h2 className='visually-hidden'>Product photos</h2>
+    <section className="product-photos">
+      <h2 className="visually-hidden">Product photos</h2>
 
-      <Image {...photoFull} className='product-photo-full' />
+      <WrappedImage
+        image={photoFull}
+        wrapper={{ node: "p", attributes: { className: "product-photo-full" } }}
+      />
 
-      <div className='product-gallery'>
+      <div className="product-gallery">
         <Button
-          className='product-gallery-prev'
+          className="product-gallery-prev"
           onClick={moveBackward}
           hideText
         >
@@ -42,22 +45,16 @@ function GalleryContent(props) {
           position={position}
         />
 
-        <Button
-          className='product-gallery-next'
-          onClick={moveForward}
-          hideText
-        >
+        <Button className="product-gallery-next" onClick={moveForward} hideText>
           Next
         </Button>
       </div>
 
-      <Button className='button' onClick={toggleGalleryModal}>
+      <Button className="button" onClick={toggleGalleryModal}>
         Open on fullscreen
       </Button>
 
-      {
-        galleryModalIsOpen && <GalleryModal {...props} />
-      }
+      {galleryModalIsOpen && <GalleryModal {...props} />}
     </section>
   );
 }
