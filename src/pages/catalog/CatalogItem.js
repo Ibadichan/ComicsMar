@@ -1,21 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Header from './catalogItem/Header';
-import Commerce from './catalogItem/Commerce';
-import Image from '~/src/common/product/Image';
-import Link from '~/src/common/linkWrappers/Link';
-import { productPath } from '~/src/helpers/routes';
+import React from "react";
+import PropTypes from "prop-types";
+import Header from "./catalogItem/Header";
+import Commerce from "./catalogItem/Commerce";
+import WrappedImage from "~/src/common/images/WrappedImage";
+import Link from "~/src/common/linkWrappers/Link";
+import { productPath } from "~/src/helpers/routes";
 
 function CatalogItem({ product }) {
   const { title, photoFull } = product;
 
   return (
-    <li className='catalog-item'>
+    <li className="catalog-item">
       <Link to={productPath(product.id)}>
         <Header>{title}</Header>
-        <Image
-          {...photoFull}
-          className='catalog-item-image'
+        <WrappedImage
+          image={photoFull}
+          wrapper={{
+            node: "p",
+            attributes: { className: "catalog-item-image" }
+          }}
         />
       </Link>
       <Commerce product={product} />

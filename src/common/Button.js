@@ -1,16 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import dataAttributes from '~/src/utils/dataAttributes';
+import React from "react";
+import PropTypes from "prop-types";
+import dataAttributes from "~/src/utils/dataAttributes";
 
 function Button(props) {
-  const {
-    type,
-    className,
-    onClick,
-    children,
-    hideText,
-    data
-  } = props;
+  const { type, className, onClick, children, hideText, data } = props;
 
   return (
     <button
@@ -19,17 +12,17 @@ function Button(props) {
       onClick={onClick}
       {...dataAttributes(data)}
     >
-      {
-        hideText ?
-          <span className='visually-hidden'>{children}</span> :
-          children
-      }
+      {hideText ? (
+        <span className="visually-hidden">{children}</span>
+      ) : (
+        children
+      )}
     </button>
   );
 }
 
 Button.defaultProps = {
-  type: 'button'
+  type: "button"
 };
 
 Button.propTypes = {
@@ -37,10 +30,7 @@ Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   data: PropTypes.objectOf(
-    PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number
-    ])
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ),
   children: PropTypes.string.isRequired,
   hideText: PropTypes.bool

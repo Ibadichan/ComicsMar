@@ -1,9 +1,9 @@
-import React from 'react';
-import { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
-import Button from '~/src/common/Button'
-import Image from '~/src/common/product/Image';
-import GalleryList from './GalleryList';
+import React from "react";
+import { createPortal } from "react-dom";
+import PropTypes from "prop-types";
+import Button from "~/src/common/Button";
+import WrappedImage from "~/src/common/images/WrappedImage";
+import GalleryList from "./GalleryList";
 
 function GalleryModal(props) {
   const {
@@ -18,51 +18,51 @@ function GalleryModal(props) {
     position
   } = props;
 
-  return (
-    createPortal(
-      <div className='modal-overlay' onClick={toggleGalleryModal}>
-        <section className='product-photos-modal'>
-          <h2 className='visually-hidden'>Product photos in modal</h2>
+  return createPortal(
+    <div className="modal-overlay" onClick={toggleGalleryModal}>
+      <section className="product-photos-modal">
+        <h2 className="visually-hidden">Product photos in modal</h2>
 
-          <Image {...photoFull} className='product-photo-full' />
+        <WrappedImage
+          image={photoFull}
+          wrapper={{
+            node: "p",
+            attributes: { className: "product-photo-full" }
+          }}
+        />
 
-          <div className='product-gallery'>
-            <Button
-              className='product-gallery-prev'
-              onClick={moveBackward}
-              hideText
-            >
-              Prev
-            </Button>
-
-            <GalleryList
-              product={product}
-              onThumbClick={onThumbClick}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-              position={position}
-            />
-
-            <Button
-              className='product-gallery-next'
-              onClick={moveForward}
-              hideText
-            >
-              Next
-            </Button>
-          </div>
-
+        <div className="product-gallery">
           <Button
-            className='modal-close'
-            onClick={toggleGalleryModal}
+            className="product-gallery-prev"
+            onClick={moveBackward}
             hideText
           >
-            Close
+            Prev
           </Button>
-        </section>
-      </div>,
-      document.getElementById('modal-root')
-    )
+
+          <GalleryList
+            product={product}
+            onThumbClick={onThumbClick}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            position={position}
+          />
+
+          <Button
+            className="product-gallery-next"
+            onClick={moveForward}
+            hideText
+          >
+            Next
+          </Button>
+        </div>
+
+        <Button className="modal-close" onClick={toggleGalleryModal} hideText>
+          Close
+        </Button>
+      </section>
+    </div>,
+    document.getElementById("modal-root")
   );
 }
 

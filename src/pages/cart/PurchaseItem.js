@@ -1,32 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Image from '~/src/common/product/Image';
+import React from "react";
+import PropTypes from "prop-types";
+import WrappedImage from "~/src/common/images/WrappedImage";
 
 function PurchaseItem({ purchase }) {
   const { title, photoFull, price, quantity } = purchase;
 
   return (
-    <li className='purchase-item'>
+    <li className="purchase-item">
       <h3>{title}</h3>
 
-      <Image
-        {...photoFull}
-        className='purchase-item-image'
+      <WrappedImage
+        image={photoFull}
+        wrapper={{
+          node: "p",
+          attributes: { className: "purchase-item-image" }
+        }}
       />
 
-      <p className='purchase-item-price'>
+      <p className="purchase-item-price">
         Price: <b>{price}$</b>
       </p>
 
-      <p className='purchase-item-quantity'>
+      <p className="purchase-item-quantity">
         Quantity: <b>{quantity}</b>
       </p>
 
-      <p className='purchase-item-total-price'>
+      <p className="purchase-item-total-price">
         Total Price: <b>{price * quantity}$</b>
       </p>
 
-      <a href='#' className='button'>Buy</a>
+      <a href="#" className="button">
+        Buy
+      </a>
     </li>
   );
 }
