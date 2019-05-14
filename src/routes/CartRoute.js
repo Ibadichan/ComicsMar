@@ -1,5 +1,5 @@
 import { cartPath } from '~/src/helpers/routes';
-import CartPage from '~/src/pages/cart';
+import CartPage from '~/src/pages/cart/Container';
 
 const CartRoute = {
   exact: true,

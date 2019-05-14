@@ -1,7 +1,9 @@
 @mixin media_query($breakpoint, $type: min) {
   @if map_has_key($breakpoints, $breakpoint) {
     $width: map_get($breakpoints, $breakpoint);
-    @if $type == max { $width: $width - 1px; }
+    @if $type == max {
+      $width: $width - 1px;
+    }
 
     @media only screen and (#{$type}-width: $width) {
       @content;
@@ -33,9 +35,34 @@
   $font_weight: false,
   $font_style: false
 ) {
-  @if $font_size { font-size: $font_size; }
-  @if $line_height { line-height: $line_height; }
-  @if $color { color: $color; }
-  @if $font_weight { font-weight: $font_weight; }
-  @if $font_style { font-style: $font_style; }
+  @if $font_size {
+    font-size: $font_size;
+  }
+  @if $line_height {
+    line-height: $line_height;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $font_weight {
+    font-weight: $font_weight;
+  }
+  @if $font_style {
+    font-style: $font_style;
+  }
+}
+
+@mixin remove_arrow() {
+  &::-ms-expand {
+    display: none;
+  }
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: "";
+  overflow: hidden;
 }
