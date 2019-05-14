@@ -1,13 +1,13 @@
-import React, { Component, StrictMode } from 'react';
-import PropTypes from 'prop-types';
-import { Router, Switch } from 'react-router-dom';
-import history from '~/src/common/history';
-import routes from '~/src/routes';
-import RouteWithSubRoutes from '~/src/common/RouteWithSubRoutes';
-import ScrollToTop from '~/src/common/ScrollToTop';
-import { connect } from 'react-redux';
-import { fetchProducts } from '~/src/actions/products';
-import Spinner from '~/src/common/Spinner';
+import React, { Component, StrictMode } from "react";
+import PropTypes from "prop-types";
+import { Router, Switch } from "react-router-dom";
+import history from "~/src/common/history";
+import routes from "~/src/routes";
+import RouteWithSubRoutes from "~/src/common/RouteWithSubRoutes";
+import ScrollToTop from "~/src/common/ScrollToTop";
+import { connect } from "react-redux";
+import { fetchProducts } from "~/src/actions/products";
+import Spinner from "~/src/common/Spinner";
 
 class Application extends Component {
   componentDidMount() {
@@ -17,21 +17,22 @@ class Application extends Component {
   render() {
     const { isFetching, products } = this.props;
 
-    if (isFetching || products.length == 0) { return <Spinner /> }
+    if (isFetching || products.length == 0) {
+      return <Spinner />;
+    }
 
     return (
-      <Router history={history}>
-        <StrictMode>
-          <ScrollToTop />
-          <Switch>
-            {
-              routes.map((route, i) => (
+      <StrictMode>
+        <Router history={history}>
+          <ScrollToTop>
+            <Switch>
+              {routes.map((route, i) => (
                 <RouteWithSubRoutes key={i} {...route} />
-              ))
-            }
-          </Switch>
-        </StrictMode>
-      </Router>
+              ))}
+            </Switch>
+          </ScrollToTop>
+        </Router>
+      </StrictMode>
     );
   }
 }
@@ -56,9 +57,7 @@ function mapActionsToProps(dispatch) {
   };
 }
 
-const connectedApplication = connect(
+export default connect(
   mapStateToProps,
   mapActionsToProps
 )(Application);
-
-export default connectedApplication;
