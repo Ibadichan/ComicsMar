@@ -15,6 +15,7 @@ function Slide({ slide }) {
 
 Slide.propTypes = {
   slide: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     photo: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired
   }).isRequired

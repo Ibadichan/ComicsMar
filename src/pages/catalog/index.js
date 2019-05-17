@@ -1,19 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import PageContent from './PageContent';
+import React from "react";
+import PropTypes from "prop-types";
+import PageLayout from "~/src/common/PageLayout";
+import NoticeMessage from "~/src/common/NoticeMessage";
+import Slideshow from "./components/slideshow/Container";
+import CatalogList from "./components/CatalogList";
 
-class CatalogPage extends Component {
-  render() {
-    const { location, products } = this.props;
-
-    return (
-      <PageContent
-        location={location}
-        products={products}
-      />
-    );
-  }
+function CatalogPage({ location, products }) {
+  return (
+    <PageLayout title="ComicsMar - World of comics">
+      {location.state && location.state.message && (
+        <NoticeMessage
+          text={location.state.message}
+          className="alert-success"
+        />
+      )}
+      <Slideshow />
+      <CatalogList products={products} />
+    </PageLayout>
+  );
 }
 
 CatalogPage.propTypes = {
@@ -21,15 +25,4 @@ CatalogPage.propTypes = {
   products: PropTypes.array.isRequired
 };
 
-function mapStateToProps({ products }) {
-  return {
-    products: products.items
-  };
-}
-
-const connectedCatalogPage = connect(
-  mapStateToProps,
-  null
-)(CatalogPage);
-
-export default connectedCatalogPage;
+export default CatalogPage;

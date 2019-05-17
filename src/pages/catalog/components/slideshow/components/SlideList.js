@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Slide from './Slide';
+import React from "react";
+import PropTypes from "prop-types";
+import Slide from "./Slide";
 
 function SlideList(props) {
   const {
@@ -12,23 +12,25 @@ function SlideList(props) {
   } = props;
 
   return (
-    <div className='slideshow-list-wrapper'>
+    <div className="slideshow-list-wrapper">
       <ul
-        className='slideshow-list'
-        style={{ transform: `translateX(${sliderPosition + unitOfMeasurement})` }}
+        className="slideshow-list"
+        style={{
+          transform: `translateX(${sliderPosition + unitOfMeasurement})`
+        }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        {
-          slides.map(slide => <Slide key={slide.id} slide={slide} />)
-        }
+        {slides.map(slide => (
+          <Slide key={slide.id} slide={slide} />
+        ))}
       </ul>
     </div>
   );
 }
 
 SlideList.propTypes = {
-  slides: PropTypes.array.isRequired,
+  slides: PropTypes.arrayOf(Slide.propTypes.slide).isRequired,
   sliderPosition: PropTypes.number.isRequired,
   unitOfMeasurement: PropTypes.string.isRequired,
   onTouchStart: PropTypes.func.isRequired,

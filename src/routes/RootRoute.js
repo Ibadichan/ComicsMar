@@ -1,5 +1,5 @@
 import { rootPath } from '~/src/helpers/routes';
-import CatalogPage from '~/src/pages/catalog';
+import CatalogPage from '~/src/pages/catalog/Container';
 
 const RootRoute = {
   exact: true,

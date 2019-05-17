@@ -11,7 +11,12 @@
   background-color: $black;
   cursor: pointer;
 
-  @include on_event {
+  &:hover,
+  &:focus {
+    background-color: $button_hover;
+  }
+
+  &:active {
     background-color: $button_active;
   }
 }

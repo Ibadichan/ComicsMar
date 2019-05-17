@@ -1,9 +1,7 @@
 $breakpoints: (
-  'tablet': 650px,
-  'laptop': 1040px,
-  'desktop': 1200px
+  "tablet": 650px,
+  "laptop": 1040px,
+  "desktop": 1200px
 );
 
-$z_indexes: (
-  'main-navigation-content'
-);
+$z_indexes: ("main-navigation-content", "slideshow-buttons");
