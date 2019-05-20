@@ -1,0 +1,109 @@
+.catalog {
+  h2 {
+    margin: 0;
+    margin-bottom: 30px;
+    @include calculate_font(24px, 30px, false, 700);
+    text-align: center;
+  }
+
+  .catalog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: space-around;
+    grid-gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .catalog-item {
+    width: 300px;
+    padding-bottom: 30px;
+    background-color: $catalog_item;
+    border-radius: 5px;
+  }
+}
+
+.catalog-item {
+  & > a {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    color: $catalog_item_header;
+
+    @include on_event {
+      color: $black;
+    }
+  }
+
+  .catalog-item-header {
+    order: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 10px;
+    @include calculate_font(18px, 21px, false, 700);
+  }
+
+  .catalog-item-price {
+    @include calculate_font(30px, 36px, false, 700);
+  }
+
+  .catalog-item-image {
+    order: 0;
+    width: 300px;
+    height: 450px;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  .catalog-item-сommerce {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .catalog-item-quantity-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.catalog-item-quantity-wrapper {
+  label {
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  input {
+    width: 160px;
+    padding: 10px;
+    font: inherit;
+    font-weight: 700;
+    border: 2px solid $black;
+    border-radius: 5px;
+    background-color: $white;
+
+    @include on_event {
+      border-color: $product_quantity_input_hover;
+    }
+  }
+}
+
+.catalog-item-image img {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+@include media_query("laptop") {
+  .catalog h2 {
+    @include calculate_font(30px, 36px);
+  }
+}
