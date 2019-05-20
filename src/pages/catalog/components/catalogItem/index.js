@@ -6,12 +6,14 @@ import Commerce from "./components/Commerce";
 import { productPath } from "~/src/helpers/routes";
 
 function CatalogItem({ product, addProductToCart }) {
-  const { id, title, photoFull } = product;
+  const { id, title, photoFull, price } = product;
 
   return (
     <li className="catalog-item">
       <Link to={productPath(id)}>
-        <h3 className="catalog-item-header">{title}</h3>
+        <h3 className="catalog-item-header">
+          {title} <b className="catalog-item-price">{price}$</b>
+        </h3>
         <WrappedImage
           image={photoFull}
           wrapper={{
@@ -29,7 +31,8 @@ CatalogItem.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    photoFull: PropTypes.object.isRequired
+    photoFull: PropTypes.object.isRequired,
+    price: PropTypes.number.isRequired
   }).isRequired,
   addProductToCart: PropTypes.func.isRequired
 };

@@ -21,7 +21,6 @@ class Commerce extends PureComponent {
 
     return (
       <div className="catalog-item-сommerce">
-        <b className="catalog-item-price">{product.price}$</b>
         <Quantity
           onChange={this.handleQuantityChange}
           value={quantity}
@@ -40,8 +39,7 @@ class Commerce extends PureComponent {
 
 Commerce.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired
   }).isRequired,
   addProductToCart: PropTypes.func.isRequired
 };

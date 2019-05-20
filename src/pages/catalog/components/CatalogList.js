@@ -5,7 +5,7 @@ import CatalogItem from "./catalogItem/Container";
 function CatalogList({ products }) {
   return (
     <section className="catalog">
-      <h2>Catalog of products</h2>
+      <h2>Catalog of products:</h2>
       <ul className="catalog-list">
         {products.map(product => (
           <CatalogItem key={product.id} product={product} />
