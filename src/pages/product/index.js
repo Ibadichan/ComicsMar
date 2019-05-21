@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import PageContent from './PageContent';
+import React from "react";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
+import PageLayout from "~/src/common/PageLayout";
+import Gallery from "./components/gallery";
+import Info from "./components/Info";
 
-class ProductPage extends Component {
-  findProduct() {
-    const { match, products } = this.props;
+function ProductPage({ match, products }) {
+  function findProduct() {
     const id = match.params.id;
     return products.filter(product => product.id == id)[0];
   }
 
-  render() {
-    const product = this.findProduct();
+  const product = findProduct();
 
-    if (product) {
-      return <PageContent product={product} />;
-    } else {
-      return <Redirect to='/404' />;
-    };
+  if (!product) {
+    return <Redirect to="/404" />;
   }
+
+  return (
+    <PageLayout title={product.title}>
+      <Gallery product={product} />
+      <Info product={product} />
+    </PageLayout>
+  );
 }
 
 ProductPage.propTypes = {
@@ -27,13 +30,4 @@ ProductPage.propTypes = {
   products: PropTypes.array.isRequired
 };
 
-function mapStateToProps({ products }) {
-  return { products: products.items };
-}
-
-const connectedProductPage = connect(
-  mapStateToProps,
-  null
-)(ProductPage);
-
-export default connectedProductPage;
+export default ProductPage;

@@ -24,7 +24,7 @@ body {
   color: $default_text;
   background-color: $white;
 
-  .with-modal {
+  &.with-modal {
     overflow: hidden;
   }
 }
