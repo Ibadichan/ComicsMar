@@ -1,6 +1,5 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import PropTypes from "prop-types";
 import Button from "~/src/common/Button";
 import WrappedImage from "~/src/common/images/WrappedImage";
 import GalleryList from "./GalleryList";
@@ -65,18 +64,5 @@ function GalleryModal(props) {
     document.getElementById("modal-root")
   );
 }
-
-GalleryModal.propTypes = {
-  product: PropTypes.object.isRequired,
-  onThumbClick: PropTypes.func.isRequired,
-  moveBackward: PropTypes.func.isRequired,
-  moveForward: PropTypes.func.isRequired,
-  onTouchStart: PropTypes.func.isRequired,
-  onTouchEnd: PropTypes.func.isRequired,
-  position: PropTypes.number.isRequired,
-  photoFull: PropTypes.object.isRequired,
-  toggleGalleryModal: PropTypes.func.isRequired,
-  galleryModalIsOpen: PropTypes.bool.isRequired
-};
 
 export default GalleryModal;

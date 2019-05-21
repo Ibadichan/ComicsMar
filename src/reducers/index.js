@@ -1,13 +1,11 @@
-import products from './products';
-import purchases from './purchases';
-import slideshow from './slideshow';
-import productGallery from './productGallery';
+import products from "./products";
+import purchases from "./purchases";
+import slideshow from "./slideshow";
 
 const reducers = {
   products,
   purchases,
-  slideshow,
-  productGallery
+  slideshow
 };
 
 export default reducers;

@@ -17,7 +17,10 @@ function GalleryItem({ largePhoto, smallPhoto }) {
 }
 
 GalleryItem.propTypes = {
-  largePhoto: PropTypes.object.isRequired,
+  largePhoto: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
+  }).isRequired,
   smallPhoto: PropTypes.object.isRequired
 };
 

@@ -1,5 +1,5 @@
 import { productPath } from '~/src/helpers/routes';
-import ProductPage from '~/src/pages/product';
+import ProductPage from '~/src/pages/product/Container';
 
 const ProductRoute = {
   exact: true,
