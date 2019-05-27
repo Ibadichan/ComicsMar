@@ -5,8 +5,6 @@ import history from "~/src/common/history";
 import routes from "~/src/routes";
 import RouteWithSubRoutes from "~/src/common/RouteWithSubRoutes";
 import ScrollToTop from "~/src/common/ScrollToTop";
-import { connect } from "react-redux";
-import { fetchProducts } from "~/src/actions/products";
 import Spinner from "~/src/common/Spinner";
 
 class Application extends Component {
@@ -42,22 +40,4 @@ Application.propTypes = {
   products: PropTypes.array.isRequired
 };
 
-function mapStateToProps({ products }) {
-  return {
-    isFetching: products.isFetching,
-    products: products.items
-  };
-}
-
-function mapActionsToProps(dispatch) {
-  return {
-    fetchProducts() {
-      dispatch(fetchProducts());
-    }
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(Application);
+export default Application;
