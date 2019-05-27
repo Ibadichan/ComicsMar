@@ -5,14 +5,7 @@ import PageLayout from "~/src/common/PageLayout";
 import Gallery from "./components/gallery";
 import Info from "./components/Info";
 
-function ProductPage({ match, products }) {
-  function findProduct() {
-    const id = match.params.id;
-    return products.filter(product => product.id == id)[0];
-  }
-
-  const product = findProduct();
-
+function ProductPage({ product }) {
   if (!product) {
     return <Redirect to="/404" />;
   }
@@ -26,8 +19,9 @@ function ProductPage({ match, products }) {
 }
 
 ProductPage.propTypes = {
-  match: PropTypes.object.isRequired,
-  products: PropTypes.array.isRequired
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default ProductPage;
