@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchSlideshowPhotos } from "~/src/actions/slideshow";
+import areStatesEqualWrapper from "~/src/helpers/redux/areStatesEqualWrapper";
 import Slideshow from "./index";
 
 function mapStateToProps(state) {
@@ -18,5 +19,9 @@ function mapActionsToProps(dispatch) {
 
 export default connect(
   mapStateToProps,
-  mapActionsToProps
+  mapActionsToProps,
+  null,
+  {
+    areStatesEqual: areStatesEqualWrapper("slideshow.photos")
+  }
 )(Slideshow);

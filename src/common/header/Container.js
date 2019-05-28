@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import areStatesEqualWrapper from "~/src/helpers/redux/areStatesEqualWrapper";
 import Header from "./index";
 
 function mapStateToProps(state) {
@@ -7,4 +8,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  {
+    areStatesEqual: areStatesEqualWrapper("purchases")
+  }
+)(Header);
