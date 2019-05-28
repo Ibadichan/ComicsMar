@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import areStatesEqualWrapper from "~/src/helpers/redux/areStatesEqualWrapper";
 import CatalogPage from "./index";
 
 function mapStateToProps(state) {
@@ -7,4 +8,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CatalogPage);
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  {
+    areStatesEqual: areStatesEqualWrapper("products.items")
+  }
+)(CatalogPage);
