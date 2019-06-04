@@ -1,33 +1,27 @@
-import request from "superagent";
-import settings from "~/src/config/settings";
-const { baseUrl, spaceId, accessToken, environment } = settings.contentful;
 import {
+  FETCH_SLIDESHOW_PHOTOS_REQUEST,
   FETCH_SLIDESHOW_PHOTOS_SUCCESS,
   FETCH_SLIDESHOW_PHOTOS_FAILURE
 } from "~/src/config/actionTypes";
-
-function fetchSlideshowPhotosSuccess(photos) {
-  return {
-    type: FETCH_SLIDESHOW_PHOTOS_SUCCESS,
-    photos
-  };
-}
-
-function fetchSlideshowPhotosFailure(error) {
-  return {
-    type: FETCH_SLIDESHOW_PHOTOS_FAILURE,
-    error
-  };
-}
+import settings from "~/src/config/settings";
+const {
+  API_CALL,
+  contentful: { baseUrl, spaceId, accessToken, environment }
+} = settings;
 
 function fetchSlideshowPhotos() {
-  return function(dispatch) {
-    request
-      .get(`${baseUrl}/spaces/${spaceId}/environments/${environment}/entries`)
-      .query({ content_type: "favouriteProduct" })
-      .set("Authorization", `Bearer ${accessToken}`)
-      .then(response => dispatch(fetchSlideshowPhotosSuccess(response.body)))
-      .catch(error => dispatch(fetchSlideshowPhotosFailure(error)));
+  return {
+    [API_CALL]: {
+      method: "GET",
+      endpoint: `${baseUrl}/spaces/${spaceId}/environments/${environment}/entries`,
+      query: { contentType: "favouriteProduct" },
+      headers: { Authorization: `Bearer ${accessToken}` },
+      types: [
+        FETCH_SLIDESHOW_PHOTOS_REQUEST,
+        FETCH_SLIDESHOW_PHOTOS_SUCCESS,
+        FETCH_SLIDESHOW_PHOTOS_FAILURE
+      ]
+    }
   };
 }
 

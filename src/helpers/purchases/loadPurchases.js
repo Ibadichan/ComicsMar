@@ -1,11 +1,8 @@
 function loadPurchases() {
   try {
-    const purchases = JSON.parse(
-      localStorage.getItem('purchases') || '[]'
-    );
-
+    const purchases = JSON.parse(localStorage.getItem("purchases") || "[]");
     return purchases;
-  } catch(error) {
+  } catch (error) {
     console.error(error);
     return [];
   }

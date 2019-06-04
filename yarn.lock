@@ -737,9 +737,9 @@ camelcase@^3.0.0:
   integrity sha1-MvxLn82vhF/N9+c7uXysImHwqwo=
 
 caniuse-lite@^1.0.30000844:
-  version "1.0.30000971"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000971.tgz#d1000e4546486a6977756547352bc96a4cfd2b13"
-  integrity sha512-TQFYFhRS0O5rdsmSbF1Wn+16latXYsQJat66f7S7lizXW1PVpWJeZw9wqqVLIjuxDRz7s7xRUj13QCfd8hKn6g==
+  version "1.0.30000973"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000973.tgz#2f8e8e54f9e6c5b7a631c9e69bfa1093d8cfd360"
+  integrity sha512-/F3t/Yo8LEdRSEPCmI15fLu5vepVh9UCg/9inJXF5AAfW7xRRJkbaM2ut52iRMQMnGCLQouLbFdbOA+VEFOIsg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -882,9 +882,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.3.47:
-  version "1.3.137"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.137.tgz#ba7c88024984c038a5c5c434529aabcea7b42944"
-  integrity sha512-kGi32g42a8vS/WnYE7ELJyejRT7hbr3UeOOu0WeuYuQ29gCpg9Lrf6RdcTQVXSt/v0bjCfnlb/EWOOsiKpTmkw==
+  version "1.3.144"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.144.tgz#d742d2c451090798303a4a5eea4f33f5e60f5d94"
+  integrity sha512-jNRFJpfNrYm5uJ4x0q9oYMOfbL0JPOlkNli8GS/5zEmCjnE5jAtoCo4BYajHiqSPqEeAjtTdItL4p7EZw+jSfg==
 
 error-ex@^1.2.0:
   version "1.3.2"
@@ -1713,9 +1713,9 @@ readable-stream@^2.0.1, readable-stream@^2.0.6:
     util-deprecate "~1.0.1"
 
 readable-stream@^3.0.6:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
-  integrity sha512-EsI+s3k3XsW+fU8fQACLN59ky34AZ14LoeVZpYwmZvldCFo0r0gnelwF2TcMjLor/BTL5aDJVBMkss0dthToPw==
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.4.0.tgz#a51c26754658e0a3c21dbf59163bd45ba6f447fc"
+  integrity sha512-jItXPLmrSR8jmTRmRWJXCnGJsfy85mB3Wd/uINMXA65yrnFo0cPClFIUWzo2najVNSl+mx7/4W8ttlLWJe99pQ==
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
@@ -1728,11 +1728,6 @@ redent@^1.0.0:
   dependencies:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
-
-redux-thunk@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
-  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
 redux@^4.0.1:
   version "4.0.1"
@@ -1836,9 +1831,9 @@ resolve-pathname@^2.2.0:
   integrity sha512-bAFz9ld18RzJfddgrO2e/0S2O81710++chRMUxHjXOYKF6jTAMrUNZrEZ1PvV0zlhfjidm08iRPdTLPno1FuRg==
 
 resolve@^1.10.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.11.0.tgz#4014870ba296176b86343d50b60f3b50609ce232"
-  integrity sha512-WL2pBDjqT6pGUNSUzMw00o4T7If+z4H2x3Gz893WoUQ5KW8Vr9txp00ykiP16VBaZF5+j/OcXJHZ9+PCvdiDKw==
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.11.1.tgz#ea10d8110376982fef578df8fc30b9ac30a07a3e"
+  integrity sha512-vIpgF6wfuJOZI7KKKSP+HmiKggadPQAdsp5HiC1mvqnfp0gF1vdwgBWZIdrVft9pgqoMFQN+R7BSWZiBxx+BBw==
   dependencies:
     path-parse "^1.0.6"
 

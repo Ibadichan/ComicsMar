@@ -1,7 +1,4 @@
-import {
-  ADD_PRODUCT_TO_CART,
-  INITIALIZE_CART
-} from '~/src/config/actionTypes';
+import { ADD_PRODUCT_TO_CART, INITIALIZE_CART } from "~/src/config/actionTypes";
 
 function addProductToCart(product, quantity) {
   return {
@@ -18,7 +15,4 @@ function initializeCart(purchases) {
   };
 }
 
-export {
-  addProductToCart,
-  initializeCart
-};
+export { addProductToCart, initializeCart };
