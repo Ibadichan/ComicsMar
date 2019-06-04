@@ -7,17 +7,20 @@ const settings = {
 
   slideshow: {
     slideWidth: 100,
-    unitOfMeasurement: '%',
+    unitOfMeasurement: "%",
     touchMinDistance: 50,
     playInterval: 5000
   },
 
   contentful: {
-    baseUrl: 'https://cdn.contentful.com',
-    spaceId: 'ywgv1cz3i98r',
-    accessToken: 'f9c5ef254b573c9b9815bdc186df08d8a8fc9794344913db35d4babcd222f949',
-    environment: 'master'
-  }
+    baseUrl: "https://cdn.contentful.com",
+    spaceId: "ywgv1cz3i98r",
+    accessToken:
+      "f9c5ef254b573c9b9815bdc186df08d8a8fc9794344913db35d4babcd222f949",
+    environment: "master"
+  },
+
+  API_CALL: "COMICSMAR_API_CALL"
 };
 
 export default settings;

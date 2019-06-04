@@ -1,7 +1,5 @@
-import {
-  ADD_PRODUCT_TO_CART
-} from '../config/actionTypes';
-import savePurchases from '../helpers/purchases/savePurchases';
+import { ADD_PRODUCT_TO_CART } from "../config/actionTypes";
+import savePurchases from "../helpers/purchases/savePurchases";
 const types = [ADD_PRODUCT_TO_CART];
 
 const saveCart = store => next => action => {
@@ -11,6 +9,6 @@ const saveCart = store => next => action => {
     const purchases = store.getState().purchases;
     savePurchases(purchases);
   }
-}
+};
 
 export default saveCart;

@@ -1,51 +1,28 @@
-import request from 'superagent';
-import settings from '~/src/config/settings';
 import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from '~/src/config/actionTypes';
-
+} from "~/src/config/actionTypes";
+import settings from "~/src/config/settings";
 const {
-  baseUrl,
-  spaceId,
-  accessToken,
-  environment
-} = settings.contentful;
-
-function fetchProductsRequest() {
-  return {
-    type: FETCH_PRODUCTS_REQUEST
-  };
-}
-
-function fetchProductsSuccess(products) {
-  return {
-    type: FETCH_PRODUCTS_SUCCESS,
-    products
-  };
-}
-
-function fetchProductsFailure(error) {
-  return {
-    type: FETCH_PRODUCTS_FAILURE,
-    error
-  };
-}
+  API_CALL,
+  contentful: { baseUrl, spaceId, accessToken, environment }
+} = settings;
 
 function fetchProducts() {
-  return function(dispatch) {
-    dispatch(fetchProductsRequest());
-
-    return (
-      request
-        .get(`${baseUrl}/spaces/${spaceId}/environments/${environment}/entries`)
-        .query({ content_type: 'product' })
-        .set('Authorization', `Bearer ${accessToken}`)
-        .then(response => dispatch(fetchProductsSuccess(response.body)))
-        .catch(error => dispatch(fetchProductsFailure(error)))
-    );
-  }
+  return {
+    [API_CALL]: {
+      method: "GET",
+      endpoint: `${baseUrl}/spaces/${spaceId}/environments/${environment}/entries`,
+      query: { contentType: "product" },
+      headers: { Authorization: `Bearer ${accessToken}` },
+      types: [
+        FETCH_PRODUCTS_REQUEST,
+        FETCH_PRODUCTS_SUCCESS,
+        FETCH_PRODUCTS_FAILURE
+      ]
+    }
+  };
 }
 
 export { fetchProducts };

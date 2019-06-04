@@ -5,7 +5,7 @@ import Slideshow from "./index";
 
 function mapStateToProps(state) {
   return {
-    slides: state.slideshow.photos
+    slides: state.slideshow.items
   };
 }
 
@@ -22,6 +22,6 @@ export default connect(
   mapActionsToProps,
   null,
   {
-    areStatesEqual: areStatesEqualWrapper("slideshow.photos")
+    areStatesEqual: areStatesEqualWrapper("slideshow.items")
   }
 )(Slideshow);

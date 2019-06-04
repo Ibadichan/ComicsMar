@@ -1,9 +1,11 @@
-import humps from 'humps';
+import humps from "humps";
 
 function dataAttributes(data) {
-  if (typeof(data) != 'object') { return {}; }
+  if (typeof data != "object") {
+    return {};
+  }
 
-  const kebabCasedData = humps.decamelizeKeys(data, { separator: '-' });
+  const kebabCasedData = humps.decamelizeKeys(data, { separator: "-" });
   const dataWithPrefix = Object.keys(kebabCasedData).reduce((result, key) => {
     result[`data-${key}`] = `${kebabCasedData[key]}`;
     return result;
