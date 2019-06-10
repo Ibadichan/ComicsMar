@@ -11,7 +11,10 @@ function CartPage({ purchases }) {
       <Redirect
         to={{
           pathname: rootPath(),
-          state: { message: "Cart is empty, add something" }
+          state: {
+            message: "Cart is empty, add something",
+            className: "alert-info"
+          }
         }}
       />
     );

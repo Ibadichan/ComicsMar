@@ -3,13 +3,22 @@ import PropTypes from "prop-types";
 import dataAttributes from "~/src/utils/dataAttributes";
 
 function Button(props) {
-  const { type, className, onClick, children, hideText, data } = props;
+  const {
+    type,
+    className,
+    onClick,
+    children,
+    hideText,
+    data,
+    disabled
+  } = props;
 
   return (
     <button
       type={type}
       className={className}
       onClick={onClick}
+      disabled={disabled}
       {...dataAttributes(data)}
     >
       {hideText ? (
@@ -33,7 +42,8 @@ Button.propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   ),
   children: PropTypes.string.isRequired,
-  hideText: PropTypes.bool
+  hideText: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 export default Button;

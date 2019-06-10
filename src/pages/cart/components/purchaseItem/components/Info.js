@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import WrappedImage from "~/src/common/images/WrappedImage";
 
-function PurchaseItem({ purchase }) {
+function Info({ purchase }) {
   const { title, photoFull, price, quantity } = purchase;
 
   return (
-    <li className="purchase-item">
+    <div className="purchase-item-info">
       <h3>{title}</h3>
 
       <WrappedImage
@@ -28,15 +28,11 @@ function PurchaseItem({ purchase }) {
       <p className="purchase-item-total-price">
         Total Price: <b>{price * quantity}$</b>
       </p>
-
-      <a href="#" className="button">
-        Buy
-      </a>
-    </li>
+    </div>
   );
 }
 
-PurchaseItem.propTypes = {
+Info.propTypes = {
   purchase: PropTypes.shape({
     title: PropTypes.string.isRequired,
     photoFull: PropTypes.object.isRequired,
@@ -45,4 +41,4 @@ PurchaseItem.propTypes = {
   }).isRequired
 };
 
-export default PurchaseItem;
+export default Info;
