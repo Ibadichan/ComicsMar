@@ -5,14 +5,11 @@ import NoticeMessage from "~/src/common/NoticeMessage";
 import Slideshow from "./components/slideshow/Container";
 import CatalogList from "./components/CatalogList";
 
-function CatalogPage({ location, products }) {
+function CatalogPage({ location: { state }, products }) {
   return (
     <PageLayout title="ComicsMar - World of comics">
-      {location.state && location.state.message && (
-        <NoticeMessage
-          text={location.state.message}
-          className="alert-success"
-        />
+      {state && state.message && (
+        <NoticeMessage text={state.message} className={state.className} />
       )}
       <Slideshow />
       <CatalogList products={products} />
