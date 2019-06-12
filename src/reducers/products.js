@@ -2,64 +2,44 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from "~/src/config/actionTypes";
+} from "../config/actionTypes";
+import { updateState, createReducer } from "../helpers/redux/reducerUtilities";
+import { findPhotoById, findPhotos } from "../helpers/parsers/contentful";
 
-const INITIAL_STATE = { items: [], isFetching: false };
-const assign = Object.assign;
-
-function products(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case FETCH_PRODUCTS_REQUEST:
-      return assign({}, state, { isFetching: true });
-    case FETCH_PRODUCTS_SUCCESS:
-      return assign({}, state, {
-        items: parseProducts(action.response),
-        isFetching: false
-      });
-    case FETCH_PRODUCTS_FAILURE:
-      console.error(action.error);
-      return assign({}, state, { isFetching: false, error: action.error });
-    default:
-      return state;
+const products = createReducer(
+  { items: [], isFetching: false },
+  {
+    [FETCH_PRODUCTS_REQUEST]: fetchProductsRequest,
+    [FETCH_PRODUCTS_SUCCESS]: fetchProductsSuccess,
+    [FETCH_PRODUCTS_FAILURE]: fetchProductsFailure
   }
+);
+
+function fetchProductsRequest(state) {
+  return updateState(state, { isFetching: true });
 }
 
-function parseProducts({ items, includes }) {
+function fetchProductsSuccess(state, action) {
+  const { items, includes } = action.response;
   const assets = includes.Asset;
+
   const products = items.map(({ fields }) => {
-    fields.photoFull = findProductPhotos(assets, fields.photoFull);
-    fields.largePhotos = findProductPhotos(assets, fields.largePhotos);
-    fields.smallPhotos = findProductPhotos(assets, fields.smallPhotos);
+    fields.photoFull = findPhotoById(fields.photoFull.sys.id, assets);
+    fields.largePhotos = findPhotos(fields.largePhotos, assets);
+    fields.smallPhotos = findPhotos(fields.smallPhotos, assets);
 
     return fields;
   });
 
-  return products;
+  return updateState(state, {
+    items: products,
+    isFetching: false
+  });
 }
 
-function findProductPhotos(assets, photos) {
-  photos = Array.isArray(photos) ? photos : [photos];
-
-  const parsedPhotos = photos.map(photo => {
-    let asset, assetFields;
-
-    for (let i = 0; i < assets.length; i++) {
-      asset = assets[i];
-      assetFields = asset.fields;
-
-      if (asset.sys.id !== photo.sys.id) {
-        continue;
-      }
-      return {
-        src: assetFields.file.url,
-        alt: assetFields.title,
-        width: assetFields.file.details.image.width,
-        height: assetFields.file.details.image.height
-      };
-    }
-  });
-
-  return parsedPhotos.length > 1 ? parsedPhotos : parsedPhotos[0];
+function fetchProductsFailure(state, { error }) {
+  console.error(error);
+  return updateState(state, { error, isFetching: false });
 }
 
 export default products;

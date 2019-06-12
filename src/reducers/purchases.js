@@ -2,39 +2,37 @@ import {
   ADD_PRODUCT_TO_CART,
   INITIALIZE_CART,
   ORDER_PRODUCT_SUCCESS
-} from "~/src/config/actionTypes";
-import deepClone from "~/src/utils/deepClone";
-const INITIAL_STATE = [];
+} from "../config/actionTypes";
+import { createReducer } from "../helpers/redux/reducerUtilities";
+import deepClone from "../utils/deepClone";
 
-function purchases(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case ADD_PRODUCT_TO_CART:
-      const { product, quantity } = action;
-      return addProductToCart(state, product, quantity);
-    case ORDER_PRODUCT_SUCCESS:
-      return state.filter(
-        purchase => purchase.id !== action.response.fields.purchase["en-US"].id
-      );
-    case INITIALIZE_CART:
-      return action.purchases;
-    default:
-      return state;
-  }
-}
+const purchases = createReducer([], {
+  [ADD_PRODUCT_TO_CART]: addProductToCart,
+  [INITIALIZE_CART]: initializeCart,
+  [ORDER_PRODUCT_SUCCESS]: orderProductSuccess
+});
 
-function addProductToCart(purchases, product, quantity) {
+function addProductToCart(purchases, { product, quantity }) {
   purchases = deepClone(purchases);
   product = Object.assign(deepClone(product), { quantity });
 
   for (let i = 0; i < purchases.length; i++) {
-    if (purchases[i].id !== product.id) {
-      continue;
-    }
+    if (purchases[i].id !== product.id) continue;
     purchases[i].quantity += product.quantity;
     return purchases;
   }
 
   return purchases.concat([product]);
+}
+
+function initializeCart(state, { purchases }) {
+  return purchases;
+}
+
+function orderProductSuccess(purchases, { response }) {
+  return purchases.filter(
+    purchase => purchase.id !== response.fields.purchase["en-US"].id
+  );
 }
 
 export default purchases;
