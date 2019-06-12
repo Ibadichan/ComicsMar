@@ -1,61 +1,74 @@
-import React, { Component } from "react";
+import React from "react";
+import { reduxForm, Field } from "redux-form";
+import history from "~/src/common/history";
+import Input from "~/src/common/Input";
+import Textarea from "~/src/common/Textarea";
+import Button from "~/src/common/Button";
+import { rootPath } from "~/src/helpers/routes";
+import { required, string, email } from "~/src/helpers/reduxForm/validators";
 
-class ContactForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { username: "", emailAddress: "", enquiry: "" };
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+function ContactForm({ handleSubmit, reset, submitting, pristine }) {
+  const fieldClassName = "contact-form-item";
 
-  handleInputChange(event) {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
+  return (
+    <section className="contact-form">
+      <h2>Contact form</h2>
 
-  render() {
-    return (
-      <section className="contact-form">
-        <h2>Contact form</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="contact-form-columns">
+          <Field
+            name="username"
+            component={Input}
+            validate={[required, string]}
+            label="Your name"
+            className={fieldClassName}
+          />
+          <Field
+            name="email"
+            component={Input}
+            validate={[required, email]}
+            type="email"
+            label="E-mail address"
+            className={fieldClassName}
+          />
+        </div>
 
-        <form action="/contacts" method="POST">
-          <p className="contact-form-item">
-            <label htmlFor="contact-form-name">Your name</label>
-            <input
-              type="text"
-              name="username"
-              id="contact-form-name"
-              className="contact-form-name"
-              onChange={this.handleInputChange}
-              required
-            />
-          </p>
-          <p className="contact-form-item">
-            <label htmlFor="contact-form-email">E-mail address</label>
-            <input
-              type="email"
-              name="emailAddress"
-              id="contact-form-email"
-              className="contact-form-email"
-              onChange={this.handleInputChange}
-              required
-            />
-          </p>
-          <p className="contact-form-item">
-            <label htmlFor="contact-form-enquiry">Enquiry</label>
-            <textarea
-              name="enquiry"
-              id="contact-form-enquiry"
-              className="contact-form-enquiry"
-              onChange={this.handleInputChange}
-              required
-            />
-          </p>
+        <Field
+          name="enquiry"
+          component={Textarea}
+          validate={[required]}
+          label="Enquiry"
+          className={`${fieldClassName} enquiry`}
+        />
 
-          <button type="submit">Submit</button>
-        </form>
-      </section>
-    );
-  }
+        <p className="contact-form-buttons">
+          <Button type="submit" className="button" disabled={submitting}>
+            Submit
+          </Button>
+          <Button
+            type="reset"
+            className="button"
+            disabled={submitting || pristine}
+            onClick={reset}
+          >
+            Reset
+          </Button>
+        </p>
+      </form>
+    </section>
+  );
 }
 
-export default ContactForm;
+export default reduxForm({
+  form: "contact",
+  onSubmit(values) {
+    // send values to server here.
+    history.push({
+      pathname: rootPath(),
+      state: {
+        message: "Thank you for contacting us.",
+        className: "alert-success"
+      }
+    });
+  }
+})(ContactForm);
