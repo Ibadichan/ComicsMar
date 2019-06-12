@@ -2,53 +2,39 @@ import {
   FETCH_SLIDESHOW_PHOTOS_REQUEST,
   FETCH_SLIDESHOW_PHOTOS_SUCCESS,
   FETCH_SLIDESHOW_PHOTOS_FAILURE
-} from "~/src/config/actionTypes";
+} from "../config/actionTypes";
+import { updateState, createReducer } from "../helpers/redux/reducerUtilities";
+import { findPhotoById } from "../helpers/parsers/contentful";
 
-const INITIAL_STATE = { items: [], isFetching: false };
-const assign = Object.assign;
-
-function slideshow(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case FETCH_SLIDESHOW_PHOTOS_REQUEST:
-      return assign({}, state, { isFetching: true });
-    case FETCH_SLIDESHOW_PHOTOS_SUCCESS:
-      return assign({}, state, {
-        items: parsePhotos(action.response),
-        isFetching: false
-      });
-    case FETCH_SLIDESHOW_PHOTOS_FAILURE:
-      console.error(action.error);
-      return assign({}, state, { error: action.error, isFetching: false });
-    default:
-      return state;
+const slideshow = createReducer(
+  { items: [], isFetching: false },
+  {
+    [FETCH_SLIDESHOW_PHOTOS_REQUEST]: fetchSlideshowPhotosRequest,
+    [FETCH_SLIDESHOW_PHOTOS_SUCCESS]: fetchSlideshowPhotosSuccess,
+    [FETCH_SLIDESHOW_PHOTOS_FAILURE]: fetchSlideshowPhotosFailure
   }
+);
+
+function fetchSlideshowPhotosRequest(state) {
+  return updateState(state, { isFetching: true });
 }
 
-function parsePhotos({ items, includes }) {
-  const assets = includes.Asset;
-  let asset, assetFields, photoId;
-
-  const photos = items.map(({ fields }) => {
-    photoId = fields.photo.sys.id;
-
-    for (let i = 0; i < assets.length; i++) {
-      asset = assets[i];
-      assetFields = asset.fields;
-
-      if (asset.sys.id !== photoId) {
-        continue;
-      }
-      fields.photo = {
-        src: assetFields.file.url,
-        alt: assetFields.title,
-        width: assetFields.file.details.image.width,
-        height: assetFields.file.details.image.height
-      };
-      return fields;
-    }
+function fetchSlideshowPhotosSuccess(state, { response }) {
+  const { items, includes } = response;
+  const slides = items.map(({ fields }) => {
+    fields.photo = findPhotoById(fields.photo.sys.id, includes.Asset);
+    return fields;
   });
 
-  return photos;
+  return updateState(state, {
+    items: slides,
+    isFetching: false
+  });
+}
+
+function fetchSlideshowPhotosFailure(state, { error }) {
+  console.error(error);
+  return updateState(state, { error, isFetching: false });
 }
 
 export default slideshow;
