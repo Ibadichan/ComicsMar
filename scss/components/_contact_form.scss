@@ -1,0 +1,91 @@
+.contact-form {
+  h2 {
+    margin: 0 15px 20px;
+    @include calculate_font(26px, 32px, false, 700);
+    text-align: center;
+  }
+
+  form {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.contact-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: 0;
+}
+
+.contact-form-item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0;
+  margin-bottom: 20px;
+
+  label {
+    align-self: flex-start;
+    margin-bottom: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font: inherit;
+    font-weight: 700;
+    border: 2px solid $black;
+    border-radius: 5px;
+    background-color: $white;
+
+    @include on_event {
+      border-color: $contact_form_input_hover;
+    }
+  }
+
+  textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100px;
+  }
+
+  .error {
+    margin-top: 5px;
+    font-weight: 700;
+    color: $error_color;
+  }
+}
+
+@include media_query("tablet") {
+  .contact-form {
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      width: 620px;
+    }
+
+    &-columns {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &-item.enquiry {
+      width: 100%;
+
+      textarea {
+        min-height: 200px;
+      }
+    }
+
+    &-buttons {
+      width: 100%;
+    }
+  }
+}

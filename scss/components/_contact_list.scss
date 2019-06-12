@@ -1,0 +1,75 @@
+$contacts_gap: 20px;
+
+.our-contacts {
+  margin-bottom: 30px;
+
+  .contact-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: $contacts_gap;
+    width: 300px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.contact-list-item {
+  position: relative;
+  width: 300px;
+  padding: 20px;
+  padding-left: 80px;
+  background-color: $contact_list_item_background;
+  border-radius: 5px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    border: 5px solid $black;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  &:first-child::before {
+    background: url("~/img/phone.svg") 50% 50% no-repeat;
+  }
+
+  &:nth-child(2)::before {
+    background: url("~/img/fax.svg") 50% 50% no-repeat;
+  }
+
+  &:last-child::before {
+    background: url("~/img/clock.svg") 50% 50% no-repeat;
+  }
+
+  b {
+    display: block;
+    margin-bottom: 10px;
+    @include calculate_font(16px, 20px, false, 700);
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+@include media_query("tablet") {
+  .our-contacts {
+    margin-bottom: 50px;
+
+    .contact-list {
+      width: 600px + $contacts_gap;
+    }
+  }
+}
+
+@include media_query("laptop") {
+  .our-contacts .contact-list {
+    width: 900px + $contacts_gap * 2;
+  }
+}

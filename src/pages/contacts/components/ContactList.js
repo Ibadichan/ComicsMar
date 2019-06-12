@@ -3,7 +3,7 @@ import React from "react";
 function ContactList() {
   return (
     <section className="our-contacts">
-      <h2>Our contacts:</h2>
+      <h2 className="visually-hidden">Our contacts:</h2>
 
       <ul className="contact-list">
         <li className="contact-list-item">
@@ -12,7 +12,7 @@ function ContactList() {
         </li>
         <li className="contact-list-item">
           <b>Fax</b>
-          <p>1-777-777-7777</p>
+          <p>1-800-234-5677</p>
         </li>
         <li className="contact-list-item">
           <b>Opening Times</b>

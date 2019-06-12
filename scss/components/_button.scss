@@ -19,4 +19,9 @@
   &:active {
     background-color: $button_active;
   }
+
+  &:disabled {
+    background-color: $button_disabled;
+    cursor: not-allowed;
+  }
 }
