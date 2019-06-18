@@ -1,0 +1,61 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background-color: $modal_overlay_background;
+  overflow: hidden;
+  visibility: hidden;
+
+  &.open {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    visibility: visible;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  font: inherit;
+  border: 0;
+  border-radius: 50%;
+  background-color: $modal_close;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: $modal_close_hover;
+  }
+
+  &:active {
+    background-color: $modal_close_active;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: $black;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

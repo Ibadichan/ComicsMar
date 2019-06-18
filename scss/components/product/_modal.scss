@@ -1,0 +1,20 @@
+.product-photos-modal {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 320px;
+  padding: 20px 10px;
+  border-radius: 5px;
+  background-color: $white;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.5s;
+
+  .product-gallery {
+    margin-bottom: 0;
+  }
+
+  &.open {
+    opacity: 1;
+  }
+}

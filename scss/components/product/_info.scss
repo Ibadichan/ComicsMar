@@ -1,0 +1,23 @@
+.product-info {
+  h2 {
+    margin: 0 15px 20px;
+    text-align: center;
+    @include calculate_font(24px, 30px, false, 700);
+  }
+
+  &-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .product-published-at {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .product-description {
+    margin: 0;
+    text-align: justify;
+  }
+}

@@ -20,12 +20,17 @@
 @import "components/alert";
 @import "components/spinner_loader";
 @import "components/button";
-@import "components/slideshow";
-@import "components/catalog_list";
-@import "components/contact_list";
-@import "components/contact_form";
+@import "components/modal";
+
+@import "components/catalog/slideshow";
+@import "components/catalog/list";
+
+@import "components/contact/list";
+@import "components/contact/form";
+
+@import "components/product/photos";
+@import "components/product/info";
+@import "components/product/modal";
 
 @import "pages/inner";
 @import "pages/not_found";
-
-@import "./shame.scss";
