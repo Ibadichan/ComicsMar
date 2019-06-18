@@ -12,8 +12,10 @@ function ProductPage({ product }) {
 
   return (
     <PageLayout title={product.title}>
-      <Gallery product={product} />
-      <Info product={product} />
+      <div className="product-columns">
+        <Gallery product={product} />
+        <Info product={product} />
+      </div>
     </PageLayout>
   );
 }

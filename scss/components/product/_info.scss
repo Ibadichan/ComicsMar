@@ -21,3 +21,31 @@
     text-align: justify;
   }
 }
+
+@include media_query("tablet") {
+  .product-info {
+    width: 300px;
+  }
+}
+
+@include media_query("laptop") {
+  .product-info {
+    width: 550px;
+
+    &-container {
+      width: 100%;
+    }
+
+    h2 {
+      display: none;
+    }
+
+    .product-published-at {
+      @include calculate_font(24px, 28px);
+    }
+
+    .product-description {
+      @include calculate_font(16px, 20px);
+    }
+  }
+}
