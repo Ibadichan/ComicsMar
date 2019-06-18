@@ -1,0 +1,117 @@
+.product-photos {
+  margin-bottom: 40px;
+
+  &-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.product-photos-container {
+  .product-photo-full {
+    width: 300px;
+    height: 450px;
+    margin: 0;
+    margin-bottom: 15px;
+    background-color: $product_photo_background;
+  }
+
+  .open-fullscreen {
+    width: 100%;
+  }
+}
+
+.product-photo-full,
+.product-gallery-item {
+  img {
+    border-radius: 5px;
+  }
+}
+
+.product-gallery {
+  display: flex;
+  width: 300px;
+  margin-bottom: 15px;
+
+  &-prev,
+  &-next {
+    position: relative;
+    width: 44px;
+    padding: 0;
+    font: inherit;
+    border: 0;
+    background-color: $product_gallery_control;
+    cursor: pointer;
+    outline: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      border: 5px solid $white;
+      border-radius: 5px;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $product_gallery_control_hover;
+    }
+
+    &:active {
+      background-color: $product_gallery_control_active;
+
+      &::before {
+        border-color: $product_gallery_arrow_active;
+      }
+    }
+  }
+
+  &-prev {
+    border-radius: 15px 0 0 15px;
+
+    &::before {
+      border-top: 0;
+      border-right: 0;
+      transform: translate(-50%, -50%) translateX(5px) rotate(45deg);
+    }
+  }
+
+  &-next {
+    border-radius: 0 15px 15px 0;
+
+    &::before {
+      border-left: 0;
+      border-bottom: 0;
+      transform: translate(-50%, -50%) translateX(-5px) rotate(45deg);
+    }
+  }
+
+  &-list-wrapper {
+    width: 210px;
+    padding: 10px;
+    border: 1px solid $product_gallery_border;
+    border-right: 0;
+    border-left: 0;
+    overflow: hidden;
+  }
+
+  &-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: transform 0.5s;
+  }
+
+  &-item {
+    flex-shrink: 0;
+    width: 86px;
+    height: 129px;
+    margin-right: 19px;
+    background-color: $product_photo_background;
+    border-radius: 5px;
+  }
+}

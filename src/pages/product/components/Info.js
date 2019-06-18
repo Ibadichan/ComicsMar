@@ -10,10 +10,12 @@ function Info({ product }) {
 
   return (
     <section className="product-info">
-      <h2>Product info:</h2>
+      <div className="product-info-container">
+        <h2>Product info:</h2>
 
-      <b className="product-published-at">{`Published at: ${publishedAt}`}</b>
-      <p className="product-description">{product.description}</p>
+        <b className="product-published-at">{`Published at: ${publishedAt}`}</b>
+        <p className="product-description">{product.description}</p>
+      </div>
     </section>
   );
 }
