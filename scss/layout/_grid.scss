@@ -1,0 +1,14 @@
+@include media_query("tablet") {
+  .product-columns {
+    display: flex;
+    justify-content: space-between;
+    width: map_get($breakpoints, "tablet");
+    margin: 0 auto;
+  }
+}
+
+@include media_query("laptop") {
+  .product-columns {
+    width: map_get($breakpoints, "laptop");
+  }
+}
