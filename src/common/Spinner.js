@@ -1,6 +1,6 @@
 import React from "react";
-import spinner from "~/img/spinner.svg";
-import Image from "./images/Image";
+import spinner from "img/spinner.svg";
+import Image from "common/images/Image";
 
 function Spinner() {
   return (

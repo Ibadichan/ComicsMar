@@ -35,15 +35,15 @@ $contacts_gap: 20px;
   }
 
   &:first-child::before {
-    background: url("~/img/phone.svg") 50% 50% no-repeat;
+    background: url("~img/phone.svg") 50% 50% no-repeat;
   }
 
   &:nth-child(2)::before {
-    background: url("~/img/fax.svg") 50% 50% no-repeat;
+    background: url("~img/fax.svg") 50% 50% no-repeat;
   }
 
   &:last-child::before {
-    background: url("~/img/clock.svg") 50% 50% no-repeat;
+    background: url("~img/clock.svg") 50% 50% no-repeat;
   }
 
   b {

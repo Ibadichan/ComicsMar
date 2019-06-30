@@ -5,8 +5,8 @@ import {
   ORDER_PRODUCT_REQUEST,
   ORDER_PRODUCT_SUCCESS,
   ORDER_PRODUCT_FAILURE
-} from "~/src/config/actionTypes";
-import settings from "~/src/config/settings";
+} from "config/actionTypes";
+import settings from "config/settings";
 const {
   API_CALL,
   contentful: {

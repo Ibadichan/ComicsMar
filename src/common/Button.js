@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import dataAttributes from "~/src/utils/dataAttributes";
+import dataAttributes from "utils/dataAttributes";
 
 function Button(props) {
   const {

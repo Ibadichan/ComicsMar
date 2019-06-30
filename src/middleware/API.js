@@ -1,5 +1,5 @@
-import APICall from "~/src/utils/APICall";
-import settings from "~/src/config/settings";
+import APICall from "utils/APICall";
+import settings from "config/settings";
 const API_CALL = settings.API_CALL;
 
 const API = ({ dispatch }) => next => action => {

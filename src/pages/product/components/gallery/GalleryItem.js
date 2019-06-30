@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WrappedImage from "~/src/common/images/WrappedImage";
+import WrappedImage from "common/images/WrappedImage";
 
 function GalleryItem({ largePhoto, smallPhoto }) {
   return (

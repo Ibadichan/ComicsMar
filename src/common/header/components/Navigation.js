@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "~/img/logo.svg";
-import NavLink from "~/src/common/linkWrappers/NavLink";
-import Image from "~/src/common/images/Image";
-import { rootPath, contactPath, cartPath } from "~/src/helpers/routes";
+import logo from "img/logo.svg";
+import NavLink from "common/linkWrappers/NavLink";
+import Image from "common/images/Image";
+import { rootPath, contactPath, cartPath } from "helpers/routes";
 
 function Navigation({ purchases }) {
   return (

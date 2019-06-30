@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PageLayout from "~/src/common/PageLayout";
-import NoticeMessage from "~/src/common/NoticeMessage";
+import PageLayout from "common/PageLayout";
+import NoticeMessage from "common/NoticeMessage";
 import Slideshow from "./components/slideshow/Container";
 import CatalogList from "./components/CatalogList";
 

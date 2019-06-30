@@ -1,43 +1,34 @@
-import React, { Component, StrictMode } from "react";
+import React, { StrictMode } from "react";
 import PropTypes from "prop-types";
 import { Router, Switch } from "react-router-dom";
-import history from "~/src/common/history";
-import routes from "~/src/routes";
-import RouteWithSubRoutes from "~/src/common/RouteWithSubRoutes";
-import ScrollToTop from "~/src/common/ScrollToTop";
-import Spinner from "~/src/common/Spinner";
+import history from "common/history";
+import RouteWithSubRoutes from "common/RouteWithSubRoutes";
+import ScrollToTop from "common/ScrollToTop";
+import Spinner from "common/Spinner";
+import routes from "routes";
 
-class Application extends Component {
-  componentDidMount() {
-    this.props.fetchProducts();
+function Application(props) {
+  if (props.isFetching) {
+    return <Spinner />;
   }
 
-  render() {
-    const { isFetching, products } = this.props;
-
-    if (isFetching || products.length == 0) {
-      return <Spinner />;
-    }
-
-    return (
-      <StrictMode>
-        <Router history={history}>
-          <ScrollToTop>
-            <Switch>
-              {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route} />
-              ))}
-            </Switch>
-          </ScrollToTop>
-        </Router>
-      </StrictMode>
-    );
-  }
+  return (
+    <StrictMode>
+      <Router history={history}>
+        <ScrollToTop>
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route} />
+            ))}
+          </Switch>
+        </ScrollToTop>
+      </Router>
+    </StrictMode>
+  );
 }
 
 Application.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  products: PropTypes.array.isRequired
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default Application;

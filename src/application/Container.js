@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import { fetchProducts } from "../actions/products";
-import areStatesEqualWrapper from "../helpers/redux/areStatesEqualWrapper";
+import areStatesEqualWrapper from "helpers/redux/areStatesEqualWrapper";
 import Application from "./index";
 
 function mapStateToProps({ products }) {
@@ -10,17 +9,9 @@ function mapStateToProps({ products }) {
   };
 }
 
-function mapActionsToProps(dispatch) {
-  return {
-    fetchProducts() {
-      dispatch(fetchProducts());
-    }
-  };
-}
-
 export default connect(
   mapStateToProps,
-  mapActionsToProps,
+  null,
   null,
   {
     areStatesEqual: areStatesEqualWrapper(

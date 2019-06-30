@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "~/src/common/Button";
+import Button from "common/Button";
 import SlideList from "./SlideList";
 import Controls from "./Controls";
 

@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import GalleryContent from "./GalleryContent";
-import settings from "~/src/config/settings";
+import settings from "config/settings";
 const { touchMinDistance } = settings.productGallery;
 import {
   changePhotoFull,

@@ -2,9 +2,9 @@ import {
   FETCH_SLIDESHOW_PHOTOS_REQUEST,
   FETCH_SLIDESHOW_PHOTOS_SUCCESS,
   FETCH_SLIDESHOW_PHOTOS_FAILURE
-} from "../config/actionTypes";
-import { updateState, createReducer } from "../helpers/redux/reducerUtilities";
-import { findPhotoById } from "../helpers/parsers/contentful";
+} from "config/actionTypes";
+import { updateState, createReducer } from "helpers/redux/reducerUtilities";
+import { findPhotoById } from "helpers/parsers/contentful";
 
 const slideshow = createReducer(
   { items: [], isFetching: false },

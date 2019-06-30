@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
-import { rootPath } from "~/src/helpers/routes";
-import PageLayout from "~/src/common/PageLayout";
+import { rootPath } from "helpers/routes";
+import PageLayout from "common/PageLayout";
 import PurchaseList from "./components/PurchaseList";
 
 function CartPage({ purchases }) {

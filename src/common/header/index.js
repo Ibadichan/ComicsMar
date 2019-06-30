@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
 import PropTypes from "prop-types";
-import Button from "../Button";
+import Button from "common/Button";
 import Navigation from "./components/Navigation";
 
 function Header({ purchases }) {

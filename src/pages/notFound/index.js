@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Main from "~/src/common/Main";
-import Button from "~/src/common/Button";
+import Main from "common/Main";
+import Button from "common/Button";
 
 function NotFoundPage({ location, history }) {
   return (

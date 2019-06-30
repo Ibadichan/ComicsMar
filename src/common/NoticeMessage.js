@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import Button from "~/src/common/Button";
+import Button from "common/Button";
 
 class NoticeMessage extends Component {
   constructor(props) {

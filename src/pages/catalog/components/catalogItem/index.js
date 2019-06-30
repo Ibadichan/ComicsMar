@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import WrappedImage from "~/src/common/images/WrappedImage";
-import Link from "~/src/common/linkWrappers/Link";
+import WrappedImage from "common/images/WrappedImage";
+import Link from "common/linkWrappers/Link";
 import Commerce from "./components/Commerce";
-import { productPath } from "~/src/helpers/routes";
+import { productPath } from "helpers/routes";
 
 function CatalogItem({ product, addProductToCart }) {
   const { id, title, photoFull, price } = product;

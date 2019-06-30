@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import areStatesEqualWrapper from "~/src/helpers/redux/areStatesEqualWrapper";
+import areStatesEqualWrapper from "helpers/redux/areStatesEqualWrapper";
 import Header from "./index";
 
 function mapStateToProps(state) {

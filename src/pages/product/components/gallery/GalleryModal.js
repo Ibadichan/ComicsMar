@@ -1,7 +1,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
-import Button from "~/src/common/Button";
-import WrappedImage from "~/src/common/images/WrappedImage";
+import Button from "common/Button";
+import WrappedImage from "common/images/WrappedImage";
 import GalleryList from "./GalleryList";
 
 function GalleryModal(props) {
