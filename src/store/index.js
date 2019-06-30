@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import middleware from "../middleware";
-import reducers from "../reducers";
-import { initializeCart } from "../actions/purchases";
-import loadPurchases from "../helpers/purchases/loadPurchases";
+import middleware from "middleware";
+import reducers from "reducers";
+import { initializeCart } from "actions/purchases";
+import loadPurchases from "helpers/purchases/loadPurchases";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

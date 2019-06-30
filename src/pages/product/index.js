@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
-import PageLayout from "~/src/common/PageLayout";
+import PageLayout from "common/PageLayout";
 import Gallery from "./components/gallery";
 import Info from "./components/Info";
 

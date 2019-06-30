@@ -65,7 +65,7 @@
     display: inline-block;
     vertical-align: top;
     padding: 0 25px;
-    background: transparent url('~/img/cart.svg') 0 50% no-repeat;
+    background: transparent url('~img/cart.svg') 0 50% no-repeat;
 
     &::after {
       content: attr(data-badge);

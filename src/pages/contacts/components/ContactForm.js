@@ -1,11 +1,11 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import history from "~/src/common/history";
-import Input from "~/src/common/Input";
-import Textarea from "~/src/common/Textarea";
-import Button from "~/src/common/Button";
-import { rootPath } from "~/src/helpers/routes";
-import { required, string, email } from "~/src/helpers/reduxForm/validators";
+import history from "common/history";
+import Input from "common/Input";
+import Textarea from "common/Textarea";
+import Button from "common/Button";
+import { rootPath } from "helpers/routes";
+import { required, string, email } from "helpers/reduxForm/validators";
 
 function ContactForm({ handleSubmit, reset, submitting, pristine }) {
   const fieldClassName = "contact-form-item";

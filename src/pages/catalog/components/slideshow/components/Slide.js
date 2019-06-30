@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Image from "~/src/common/images/Image";
+import Image from "common/images/Image";
 
 function Slide({ slide }) {
   const { title, photo } = slide;

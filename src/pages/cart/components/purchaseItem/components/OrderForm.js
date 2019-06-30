@@ -1,14 +1,9 @@
 import React from "react";
 import { Field } from "redux-form";
-import { normalizePhone } from "~/src/helpers/reduxForm/normalizers";
-import {
-  required,
-  string,
-  length,
-  email
-} from "~/src/helpers/reduxForm/validators";
-import Input from "~/src/common/Input";
-import Button from "~/src/common/Button";
+import { normalizePhone } from "helpers/reduxForm/normalizers";
+import { required, string, length, email } from "helpers/reduxForm/validators";
+import Input from "common/Input";
+import Button from "common/Button";
 
 function OrderForm({ handleSubmit, reset, submitting, pristine }) {
   const fieldClassName = "purchase-order-form-item";

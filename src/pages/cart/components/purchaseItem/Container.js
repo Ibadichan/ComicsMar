@@ -1,8 +1,8 @@
 import { reduxForm } from "redux-form";
-import history from "~/src/common/history";
-import { orderProduct } from "~/src/actions/products";
-import { rootPath } from "~/src/helpers/routes";
-import orderSerializer from "~/src/helpers/serializers/order";
+import history from "common/history";
+import { orderProduct } from "actions/products";
+import { rootPath } from "helpers/routes";
+import orderSerializer from "helpers/serializers/order";
 import PurchaseItem from "./index";
 
 export default reduxForm({

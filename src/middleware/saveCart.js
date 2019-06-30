@@ -1,8 +1,5 @@
-import {
-  ADD_PRODUCT_TO_CART,
-  ORDER_PRODUCT_SUCCESS
-} from "../config/actionTypes";
-import savePurchases from "../helpers/purchases/savePurchases";
+import { ADD_PRODUCT_TO_CART, ORDER_PRODUCT_SUCCESS } from "config/actionTypes";
+import savePurchases from "helpers/purchases/savePurchases";
 const types = [ADD_PRODUCT_TO_CART, ORDER_PRODUCT_SUCCESS];
 
 const saveCart = store => next => action => {

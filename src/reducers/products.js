@@ -2,9 +2,9 @@ import {
   FETCH_PRODUCTS_REQUEST,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILURE
-} from "../config/actionTypes";
-import { updateState, createReducer } from "../helpers/redux/reducerUtilities";
-import { findPhotoById, findPhotos } from "../helpers/parsers/contentful";
+} from "config/actionTypes";
+import { updateState, createReducer } from "helpers/redux/reducerUtilities";
+import { findPhotoById, findPhotos } from "helpers/parsers/contentful";
 
 const products = createReducer(
   { items: [], isFetching: false },

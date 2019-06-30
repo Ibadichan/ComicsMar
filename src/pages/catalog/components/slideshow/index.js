@@ -1,7 +1,7 @@
-import React, { PureComponent } from "React";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import Slider from "./components/Slider";
-import settings from "~/src/config/settings";
+import settings from "config/settings";
 const {
   slideWidth,
   unitOfMeasurement,
@@ -24,7 +24,6 @@ class Slideshow extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.fetchSlideshowPhotos();
     this.startAutoSlideShow();
   }
 
@@ -105,8 +104,7 @@ class Slideshow extends PureComponent {
 }
 
 Slideshow.propTypes = {
-  slides: PropTypes.array.isRequired,
-  fetchSlideshowPhotos: PropTypes.func.isRequired
+  slides: PropTypes.array.isRequired
 };
 
 export default Slideshow;

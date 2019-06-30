@@ -1,4 +1,4 @@
-import settings from "~/src/config/settings";
+import settings from "config/settings";
 const { slideWidth, slideCount } = settings.productGallery;
 
 function changePhotoFull(target, prevState) {

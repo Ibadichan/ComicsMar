@@ -1,4 +1,4 @@
-import { INITIALIZE_CART, ADD_PRODUCT_TO_CART } from "~/src/config/actionTypes";
+import { INITIALIZE_CART, ADD_PRODUCT_TO_CART } from "config/actionTypes";
 
 function initializeCart(purchases) {
   return {

@@ -2,9 +2,9 @@ import {
   ADD_PRODUCT_TO_CART,
   INITIALIZE_CART,
   ORDER_PRODUCT_SUCCESS
-} from "../config/actionTypes";
-import { createReducer } from "../helpers/redux/reducerUtilities";
-import deepClone from "../utils/deepClone";
+} from "config/actionTypes";
+import { createReducer } from "helpers/redux/reducerUtilities";
+import deepClone from "utils/deepClone";
 
 const purchases = createReducer([], {
   [ADD_PRODUCT_TO_CART]: addProductToCart,

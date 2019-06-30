@@ -1,4 +1,4 @@
-import deepFind from "~/src/utils/deepFind";
+import deepFind from "utils/deepFind";
 
 function areStatesEqualWrapper(...keys) {
   return function(next, prev) {

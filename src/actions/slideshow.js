@@ -2,8 +2,8 @@ import {
   FETCH_SLIDESHOW_PHOTOS_REQUEST,
   FETCH_SLIDESHOW_PHOTOS_SUCCESS,
   FETCH_SLIDESHOW_PHOTOS_FAILURE
-} from "~/src/config/actionTypes";
-import settings from "~/src/config/settings";
+} from "config/actionTypes";
+import settings from "config/settings";
 const {
   API_CALL,
   contentful: { deliveryBaseUrl, spaceId, deliveryAccessToken, environment }

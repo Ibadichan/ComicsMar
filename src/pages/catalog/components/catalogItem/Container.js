@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addProductToCart } from "~/src/actions/purchases";
+import { addProductToCart } from "actions/purchases";
 import CatalogItem from "./index";
 
 function mapActionsToProps(dispatch) {
