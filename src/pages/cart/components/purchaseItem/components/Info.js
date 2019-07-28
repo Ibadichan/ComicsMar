@@ -17,17 +17,24 @@ function Info({ purchase }) {
         }}
       />
 
-      <p className="purchase-item-price">
-        Price: <b>{price}$</b>
-      </p>
+      <table className="purchase-item-table">
+        <tbody>
+          <tr>
+            <th>Price</th>
+            <td>{price}$</td>
+          </tr>
 
-      <p className="purchase-item-quantity">
-        Quantity: <b>{quantity}</b>
-      </p>
+          <tr>
+            <th>Quantity</th>
+            <td>{quantity}</td>
+          </tr>
 
-      <p className="purchase-item-total-price">
-        Total Price: <b>{price * quantity}$</b>
-      </p>
+          <tr>
+            <th>Total Price</th>
+            <td>{price * quantity}$</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
