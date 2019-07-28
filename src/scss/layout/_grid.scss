@@ -1,9 +1,18 @@
+.purchases-container {
+  margin: 0 auto;
+  width: 300px;
+}
+
 @include media_query("tablet") {
   .product-columns {
     display: flex;
     justify-content: space-between;
     width: map_get($breakpoints, "tablet");
     margin: 0 auto;
+  }
+
+  .purchases-container {
+    width: map_get($breakpoints, "tablet");
   }
 }
 
