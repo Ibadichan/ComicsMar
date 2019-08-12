@@ -1,105 +1,101 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { Field } from "redux-form";
 import { normalizePhone } from "helpers/reduxForm/normalizers";
 import { required, string, length, email } from "helpers/reduxForm/validators";
 import Input from "common/Input";
 import Button from "common/Button";
 
-class OrderForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false };
-    this._toggleForm = this._toggleForm.bind(this);
-  }
+function OrderForm(props) {
+  const {
+    handleSubmit,
+    reset,
+    submitting,
+    pristine,
+    formClassName,
+    isOpen
+  } = props;
 
-  _toggleForm() {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  }
+  const formVisibility = isOpen ? "open" : "hidden";
+  const fieldClassName = `${formClassName}-item`;
 
-  render() {
-    const { handleSubmit, reset, submitting, pristine } = this.props;
-    const formClassName = "purchase-order-form";
-    const fieldClassName = `${formClassName}-item`;
-    const formVisibility = this.state.isOpen ? "open" : "hidden";
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className={`${formClassName} ${formVisibility}`}
+    >
+      <div className={`${formClassName}-container`}>
+        <Field
+          name="surname"
+          component={Input}
+          validate={[required, string]}
+          label="Surname"
+          className={fieldClassName}
+        />
+        <Field
+          name="name"
+          component={Input}
+          validate={[required, string]}
+          label="Name"
+          className={fieldClassName}
+        />
+        <Field
+          name="patronym"
+          component={Input}
+          validate={[required, string]}
+          label="Patronym"
+          className={fieldClassName}
+        />
+        <Field
+          name="phone"
+          component={Input}
+          normalize={normalizePhone}
+          validate={[required, length(12)]}
+          type="tel"
+          label="Phone"
+          className={fieldClassName}
+        />
+        <Field
+          name="email"
+          component={Input}
+          validate={[required, email]}
+          type="email"
+          label="Email"
+          className={fieldClassName}
+        />
+        <Field
+          name="address"
+          component={Input}
+          validate={[required]}
+          label="Address"
+          className={fieldClassName}
+        />
 
-    return (
-      <Fragment>
-        <p className={`toggle-${formClassName} form-is-${formVisibility}`}>
-          Order this product
-          <Button className="button" onClick={this._toggleForm} hideText>
-            Toggle form
+        <p className={`${formClassName}-buttons`}>
+          <Button type="submit" className="button" disabled={submitting}>
+            Submit
+          </Button>
+          <Button
+            type="reset"
+            className="button"
+            disabled={submitting || pristine}
+            onClick={reset}
+          >
+            Reset
           </Button>
         </p>
-
-        <form
-          onSubmit={handleSubmit}
-          className={`${formClassName} ${formVisibility}`}
-        >
-          <div className="purchase-order-form-container">
-            <Field
-              name="surname"
-              component={Input}
-              validate={[required, string]}
-              label="Surname"
-              className={fieldClassName}
-            />
-            <Field
-              name="name"
-              component={Input}
-              validate={[required, string]}
-              label="Name"
-              className={fieldClassName}
-            />
-            <Field
-              name="patronym"
-              component={Input}
-              validate={[required, string]}
-              label="Patronym"
-              className={fieldClassName}
-            />
-            <Field
-              name="phone"
-              component={Input}
-              normalize={normalizePhone}
-              validate={[required, length(12)]}
-              type="tel"
-              label="Phone"
-              className={fieldClassName}
-            />
-            <Field
-              name="email"
-              component={Input}
-              validate={[required, email]}
-              type="email"
-              label="Email"
-              className={fieldClassName}
-            />
-            <Field
-              name="address"
-              component={Input}
-              validate={[required]}
-              label="Address"
-              className={fieldClassName}
-            />
-
-            <p className={`${formClassName}-buttons`}>
-              <Button type="submit" className="button" disabled={submitting}>
-                Submit
-              </Button>
-              <Button
-                type="reset"
-                className="button"
-                disabled={submitting || pristine}
-                onClick={reset}
-              >
-                Reset
-              </Button>
-            </p>
-          </div>
-        </form>
-      </Fragment>
-    );
-  }
+      </div>
+    </form>
+  );
 }
+
+OrderForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  formClassName: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired
+};
 
 export default OrderForm;
