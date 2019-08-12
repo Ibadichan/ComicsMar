@@ -17,7 +17,8 @@
 }
 
 @include media_query("laptop") {
-  .product-columns {
+  .product-columns,
+  .purchases-container {
     width: map_get($breakpoints, "laptop");
   }
 }

@@ -1,19 +1,22 @@
 .purchase-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: space-between;
+  grid-row-gap: 50px;
   margin: 0;
   padding: 0;
   list-style: none;
-
-  .purchase-item:not(:last-child) {
-    margin-bottom: 50px;
-  }
 }
 
 .purchase-item-info {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
+
+  & > a {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    color: $default_text;
+  }
 
   .purchase-item-image {
     order: 0;
@@ -32,12 +35,10 @@
   h3 {
     order: 1;
     margin: 0;
-    margin-bottom: 20px;
-    @include calculate_font(18px, 21px, false, 700);
+    @include calculate_font(18px, 21px, $default_text, 700);
   }
 
   .purchase-item-table {
-    order: 3;
     width: 300px;
   }
 }

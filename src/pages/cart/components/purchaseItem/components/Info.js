@@ -1,21 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Link from "common/linkWrappers/Link";
 import WrappedImage from "common/images/WrappedImage";
+import { productPath } from "helpers/routes";
 
 function Info({ purchase }) {
-  const { title, photoFull, price, quantity } = purchase;
+  const { id, title, photoFull, price, quantity } = purchase;
 
   return (
     <div className="purchase-item-info">
-      <h3>{title}</h3>
+      <Link to={productPath(id)}>
+        <h3>{title}</h3>
 
-      <WrappedImage
-        image={photoFull}
-        wrapper={{
-          node: "p",
-          attributes: { className: "purchase-item-image" }
-        }}
-      />
+        <WrappedImage
+          image={photoFull}
+          wrapper={{
+            node: "p",
+            attributes: { className: "purchase-item-image" }
+          }}
+        />
+      </Link>
 
       <table className="purchase-item-table">
         <tbody>
@@ -41,6 +45,7 @@ function Info({ purchase }) {
 
 Info.propTypes = {
   purchase: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     photoFull: PropTypes.object.isRequired,
     price: PropTypes.number.isRequired,
