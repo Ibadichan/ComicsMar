@@ -27,7 +27,11 @@ function Footer() {
 
         <p className="site-is-fake">
           This site is fake and does not sell anything, the real owner is here
-          <a href="https://www.marvel.com" target="_blank">
+          <a
+            href="https://www.marvel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             https://www.marvel.com
           </a>
         </p>
