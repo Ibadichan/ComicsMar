@@ -10,7 +10,6 @@ const config = {
   ],
   deploy: {
     production: {
-      key: "~/.ssh/id_rsa.pub",
       user: "deployer",
       host: ["79.143.28.56"],
       ref: "origin/master",
