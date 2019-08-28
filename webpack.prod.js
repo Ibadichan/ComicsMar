@@ -2,8 +2,6 @@ const path = require("path");
 const ManifestPlugin = require("webpack-manifest-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
 
 const config = {
   mode: "production",
@@ -57,8 +55,7 @@ const config = {
     }),
     new CompressionPlugin({
       test: /\.(js|css)$/
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ],
 
   resolve: {
