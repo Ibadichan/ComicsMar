@@ -19,10 +19,10 @@ function Navigation({ purchases }) {
             </NavLink>
           </li>
           <li>
-            <a href="javascript:void(0);">About</a>
+            <a href="#">About</a>
           </li>
           <li>
-            <a href="javascript:void(0);">Team</a>
+            <a href="#">Team</a>
           </li>
         </ul>
         <ul className="user-navigation">
