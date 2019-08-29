@@ -2,8 +2,8 @@ const config = {
   apps: [
     {
       name: "ComicsMar",
-      script: "./current/initializers/server/index.js",
-      cwd: "/home/deployer/ComicsMar",
+      script: "./initializers/server/index.js",
+      cwd: "/home/deployer/ComicsMar/current",
       instances: "max",
       exec_mode: "cluster"
     }
