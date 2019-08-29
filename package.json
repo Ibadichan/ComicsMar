@@ -38,7 +38,6 @@
     "style-loader": "^0.23.1",
     "url-loader": "^2.0.0",
     "webpack": "^4.34.0",
-    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2",
     "webpack-manifest-plugin": "^2.0.4"
