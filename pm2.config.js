@@ -3,7 +3,7 @@ const config = {
     {
       name: "ComicsMar",
       script: "./initializers/server/index.js",
-      cwd: "/home/deployer/ComicsMar/current/current",
+      cwd: "/home/deployer/ComicsMar",
       instances: "max",
       exec_mode: "cluster"
     }
@@ -18,7 +18,7 @@ const config = {
         "npm install && " +
         "npm run build && " +
         "pm2 startOrRestart pm2.config.js --env production",
-      path: "/home/deployer/ComicsMar/current/current",
+      path: "/home/deployer/ComicsMar",
       ssh_options: "StrictHostKeyChecking=no"
     }
   }
