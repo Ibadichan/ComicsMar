@@ -15,8 +15,8 @@ const config = {
       ref: "origin/master",
       repo: "git@github.com:Ibadichan/ComicsMar.git",
       "post-deploy":
-        "npm install && " +
-        "npm run build && " +
+        "yarn install && " +
+        "yarn build && " +
         "pm2 startOrRestart pm2.config.js --env production",
       path: "/home/deployer/ComicsMar",
       ssh_options: "StrictHostKeyChecking=no"
