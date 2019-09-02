@@ -9,15 +9,14 @@ const config = {
   entry: "./src/index.js",
   output: {
     filename: "main.[hash].js",
-    path: path.resolve(__dirname, "public/assets"),
-    publicPath: "/assets/"
+    path: path.resolve(__dirname, "public/assets")
   },
 
   module: {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: [path.resolve(__dirname, "node_modules/core-js")],
+        exclude: /@babel(?:\/|\\{1,2})runtime|core-js/,
         use: "babel-loader"
       },
       {
