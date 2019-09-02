@@ -47,7 +47,6 @@
     "build": "webpack --config webpack.prod.js"
   },
   "browserslist": [
-    "cover 100%",
-    "not dead"
+    "defaults"
   ]
 }

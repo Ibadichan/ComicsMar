@@ -1,8 +1,6 @@
 const config = {
   plugins: [
-    require("autoprefixer")({
-      grid: true
-    }),
+    require("autoprefixer"),
     require("cssnano")({
       preset: "default"
     })
