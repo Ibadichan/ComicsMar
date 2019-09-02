@@ -17,7 +17,7 @@ const config = {
     rules: [
       {
         test: /\.m?js$/,
-        // exclude: [path.resolve(__dirname, "node_modules")],
+        exclude: [path.resolve(__dirname, "node_modules/core-js")],
         use: "babel-loader"
       },
       {
