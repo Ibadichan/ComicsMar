@@ -1,6 +1,5 @@
-import { matchPath } from "react-router";
+import { matchPath } from "react-router-dom";
 import { parse } from "qs";
-import history from "common/history";
 import store from "store";
 import routes from "routes";
 import prepareData from "./prepareData";
@@ -26,7 +25,5 @@ function historyCallback(location, action) {
 
   prepareData(store, state);
 }
-
-history.listen(historyCallback);
 
 export default historyCallback;

@@ -15,7 +15,8 @@ function GalleryContent(props) {
     onTouchStart,
     onTouchEnd,
     position,
-    toggleGalleryModal
+    toggleGalleryModal,
+    modalIsOpen
   } = props;
 
   return (
@@ -61,7 +62,7 @@ function GalleryContent(props) {
           Open on fullscreen
         </Button>
 
-        <GalleryModal {...props} />
+        {modalIsOpen && <GalleryModal {...props} />}
       </div>
     </section>
   );

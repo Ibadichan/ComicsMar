@@ -14,15 +14,12 @@ function GalleryModal(props) {
     onThumbClick,
     onTouchStart,
     onTouchEnd,
-    position,
-    modalIsOpen
+    position
   } = props;
 
-  const open = modalIsOpen ? "open" : "";
-
   return createPortal(
-    <div className={`modal-overlay ${open}`} onClick={toggleGalleryModal}>
-      <section className={`product-photos-modal ${open}`}>
+    <div className="modal-overlay open" onClick={toggleGalleryModal}>
+      <section className="product-photos-modal">
         <h2 className="visually-hidden">Product photos in modal</h2>
 
         <div className="product-photos-container">

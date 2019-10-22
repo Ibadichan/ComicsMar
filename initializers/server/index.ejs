@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ComicsMar</title>
+    <%- helmet.title.toString() %>
     <meta charset="utf-8" />
     <meta
       name="description"
@@ -42,9 +42,10 @@
         enable it please, or download new browser :)
       </p>
     </noscript>
-    <div id="app-root"></div>
+    <div id="app-root"><%- content %></div>
     <div id="modal-root"></div>
     <div id="alert-root"></div>
+    <script>window.__INITIAL_STATE__ = <%- initialState %></script>
     <script src="<%- webpackAsset('main.js') %>"></script>
   </body>
 </html>

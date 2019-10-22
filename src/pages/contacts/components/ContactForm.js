@@ -1,6 +1,5 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import history from "common/history";
 import Input from "common/Input";
 import Textarea from "common/Textarea";
 import Button from "common/Button";
@@ -61,9 +60,8 @@ function ContactForm({ handleSubmit, reset, submitting, pristine }) {
 
 export default reduxForm({
   form: "contact",
-  onSubmit(values) {
-    // send values to server here.
-    history.push({
+  onSubmit(values, dispatch, props) {
+    props.history.push({
       pathname: rootPath(),
       state: {
         message: "Thank you for contacting us.",

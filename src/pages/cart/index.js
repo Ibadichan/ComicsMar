@@ -1,34 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { rootPath } from "helpers/routes";
 import PageLayout from "common/PageLayout";
+import Link from "common/linkWrappers/Link";
 import PurchaseList from "./components/PurchaseList";
 
-function CartPage({ purchases }) {
-  if (purchases.length == 0) {
-    return (
-      <Redirect
-        to={{
-          pathname: rootPath(),
-          state: {
-            message: "Cart is empty, add something",
-            className: "alert-info"
-          }
-        }}
-      />
-    );
-  }
-
+function CartPage({ purchases, pageTitle }) {
   return (
-    <PageLayout title="Products added to cart:">
-      <PurchaseList purchases={purchases} />
+    <PageLayout title={pageTitle}>
+      <Helmet>
+        <title>{`My purchases(${purchases.length})`}</title>
+      </Helmet>
+
+      {purchases.length == 0 ? (
+        <Link className="button cart-page__homepage-link" to={rootPath()}>
+          To homepage
+        </Link>
+      ) : (
+        <PurchaseList purchases={purchases} />
+      )}
     </PageLayout>
   );
 }
 
 CartPage.propTypes = {
-  purchases: PropTypes.array.isRequired
+  purchases: PropTypes.array.isRequired,
+  pageTitle: PropTypes.string.isRequired
 };
 
 export default CartPage;

@@ -17,6 +17,7 @@ const config = {
       "post-deploy":
         "yarn install && " +
         "yarn build && " +
+        "yarn build:server && " +
         "pm2 startOrRestart pm2.config.js --env production",
       path: "/home/deployer/ComicsMar",
       ssh_options: "StrictHostKeyChecking=no"

@@ -1,5 +1,6 @@
 const express = require("express");
 const webpackAsset = require("./helpers/webpackAsset");
+const renderApp = require('../../public/assets/SSR').default;
 const app = express();
 const port = 8080;
 
@@ -11,7 +12,9 @@ app.set("views", __dirname);
 app.set("view engine", "ejs");
 
 app.get("*", (request, response) => {
-  response.render("index", { webpackAsset });
+  renderApp(request, response).then(params => {
+    response.render("index", { webpackAsset, ...params });
+  });
 });
 
 app.listen(port, () => {

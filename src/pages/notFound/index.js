@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import Main from "common/Main";
 import Button from "common/Button";
 
 function NotFoundPage({ location, history }) {
   return (
     <Main className="not-found-page" headerText="Page not found">
+      <Helmet>
+        <title>Not found</title>
+      </Helmet>
+
       <p>
         You found a broken link
         <b className="broken-link">'{location.pathname}'</b>
