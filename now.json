@@ -1,0 +1,12 @@
+{
+  "name": "ComicsMar",
+  "version": 2,
+  "builds": [
+    { "src": "initializers/server/index.js", "use": "@now/node-server" },
+    { "src": "public/assets/main.js", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/assets/main.js", "dest": "/public/assets/main.js" },
+    { "src": "/.*", "dest": "/initializers/server/index.js" }
+  ]
+}

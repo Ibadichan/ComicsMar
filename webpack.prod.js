@@ -8,7 +8,7 @@ const config = {
 
   entry: "./src/index.js",
   output: {
-    filename: "main.[hash].js",
+    filename: "main.js", // add contenthash when to no use Zeit Now
     path: path.resolve(__dirname, "public/assets"),
     publicPath: "/assets/"
   },
@@ -51,7 +51,7 @@ const config = {
   plugins: [
     new ManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: "main.[hash].css"
+      filename: "main.[contenthash].css"
     }),
     new CompressionPlugin({
       test: /\.(js|css)$/
