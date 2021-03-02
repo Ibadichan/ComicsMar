@@ -1,9 +1,8 @@
 {
-  "name": "ComicsMar",
   "version": 2,
   "builds": [
-    { "src": "initializers/server/index.js", "use": "@now/node-server" },
-    { "src": "public/assets/main.js", "use": "@now/static" }
+    { "src": "initializers/server/index.js", "use": "@vercel/node-server" },
+    { "src": "public/assets/main.js", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/assets/main.js", "dest": "/public/assets/main.js" },

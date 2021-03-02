@@ -8,7 +8,7 @@ const config = {
 
   entry: "./src/index.js",
   output: {
-    filename: "main.js", // add contenthash when to no use Zeit Now
+    filename: "main.js", // add contenthash when to not use Vercel
     path: path.resolve(__dirname, "public/assets"),
     publicPath: "/assets/"
   },

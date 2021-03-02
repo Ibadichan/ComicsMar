@@ -1,2 +1,3 @@
 # ComicsMar
-https://comicsmar.ibadichan.now.sh/
+
+https://comicsmar.ibadichan.vercel.sh/

@@ -11,3 +11,5 @@ npm-debug.*
 Thumbs.db
 dist/
 public/assets/
+
+.vercel

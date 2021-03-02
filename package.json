@@ -48,7 +48,7 @@
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:server": "webpack --config webpack.server.js",
-    "now-build": "yarn install && yarn build && yarn build:server"
+    "vercel-build": "yarn install && yarn build && yarn build:server"
   },
   "browserslist": [
     "defaults"
