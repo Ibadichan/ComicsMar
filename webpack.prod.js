@@ -8,7 +8,7 @@ const config = {
 
   entry: "./src/index.js",
   output: {
-    filename: "main.js", // add contenthash when to not use Vercel
+    filename: "main.[contenthash].js",
     path: path.resolve(__dirname, "public/assets"),
     publicPath: "/assets/"
   },
