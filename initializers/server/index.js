@@ -3,7 +3,7 @@ const express = require("express");
 const webpackAsset = require("./helpers/webpackAsset");
 const renderApp = require("../../public/assets/SSR").default;
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.use(
   "/assets",
