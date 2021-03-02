@@ -1,11 +1,3 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "initializers/server/index.js", "use": "@vercel/node" },
-    { "src": "public/assets/main.js", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/assets/main.js", "dest": "/public/assets/main.js" },
-    { "src": "/.*", "dest": "/initializers/server/index.js" }
-  ]
+  "rewrites": [{ "source": "/.*", "destination": "/initializers/server" }]
 }
